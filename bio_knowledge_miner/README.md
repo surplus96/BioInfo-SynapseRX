@@ -112,5 +112,9 @@ print(search_by_keyword("KRAS"))
 ```
 
 ---
+
+## Example Result
+<img src="https://github.com/surplus96/BioInfo-Projects/blob/main/data/result/KRAS_knowledge_network.png">
+
 ## License
 MIT 
