@@ -1,0 +1,358 @@
+[
+    {
+        "pmid": "40554983",
+        "title": "Recent advance of KRAS-G12C inhibitors for cancer therapy.",
+        "abstract": "The RAS gene family encodes key oncoproteins that play a central role in cellular signal transduction and tumorigenesis. KRAS exhibits the highest mutation frequency in human cancers, accounting for approximately 80 % of RAS-driven malignancies, with the glycine-to-cysteine substitution at codon 12 (G12C) being one of the most prevalent oncogenic variants. RAS proteins regulate downstream signaling pathways by modulating transcription and translation processes, while at the cellular level, they promote malignant phenotypes such as uncontrolled proliferation and metastasis, making them critical therapeutic targets. In 2021, the FDA approved AMG510 (Sotorasib), the first covalent inhibitor targeting the KRAS-G12C mutation. Nevertheless, emerging resistance mechanisms necessitate continuous medicinal chemistry innovations. Currently, many highly KRAS-G12C inhibitors have been approved or are undergoing various clinical stages. This review provides an overview of contemporary medicinal chemistry approaches in KRAS-G12C inhibitor development. The collective insights from this analysis, combined with existing literature, provide valuable frameworks for designing novel KRAS-G12C targeted therapeutics.",
+        "authors": [
+            "Mengqi Li",
+            "Huan Wang",
+            "Fei Wang",
+            "Dan Liu",
+            "Chong Feng",
+            "Guangxin Yan",
+            "Xiaoxue Fan"
+        ],
+        "journal": "European journal of medicinal chemistry",
+        "doi": "10.1016/j.ejmech.2025.117878"
+    },
+    {
+        "pmid": "40523897",
+        "title": "Garsorasib, a KRAS G12C inhibitor, with or without cetuximab, an EGFR antibody, in colorectal cancer cohorts of a phase II trial in advanced solid tumors with KRAS G12C mutation.",
+        "abstract": "Mutations in the KRAS gene have long been implicated in the pathogenesis of colorectal cancer (CRC). KRAS G12C inhibitors overcome the \"undruggable\" challenge, enabling precision therapy. Garsorasib (D-1553), a highly potent and selective KRAS G12C inhibitor, has demonstrated promising anti-tumor activity and favorable safety profile in early clinical trials. We conducted an open-label, nonrandomized phase II trial (ClinicalTrials.gov, NCT04585035) to assess the safety and efficacy of garsorasib with or without cetuximab in KRAS G12C-mutated CRC. In the monotherapy cohort (n = 26), objective response rate (ORR) was 19.2% (95% CI, 6.6-39.4), disease control rate (DCR) was 92.3% (95% CI, 74.9-99.1), median progression-free survival (PFS) was 5.5 months (95% CI, 2.9-11.6) and median overall survival (OS) was 13.1 months (95% CI, 9.5-NE). In the combination cohort (n = 42), ORR was 45.2% (95% CI, 29.8-61.3), DCR was 92.9% (95% CI, 80.5-98.5), median PFS was 7.5 months (95% CI, 5.5-8.1), and median OS was not reached. Grade ≥3 treatment-related adverse events occurred in 5 (19.2%) and 6 (14.3%) patients in monotherapy and combination cohort, respectively. Garsorasib with or without cetuximab showed a promising efficacy and manageable safety profiles in heavily pretreated patients with KRAS G12C-mutated CRC, providing a potential new treatment approach for such population.",
+        "authors": [
+            "Dan-Yun Ruan",
+            "Hao-Xiang Wu",
+            "Ye Xu",
+            "Pamela N Munster",
+            "Yanhong Deng",
+            "Gary Richardson",
+            "Dong Yan",
+            "Myung-Ah Lee",
+            "Keun-Wook Lee",
+            "Hongming Pan",
+            "Steven Hager",
+            "Xingya Li",
+            "Shaozhong Wei",
+            "Xinfang Hou",
+            "Craig Underhill",
+            "Michael Millward",
+            "Ina Nordman",
+            "Jingdong Zhang",
+            "Jianzhen Shan",
+            "Guohong Han",
+            "Jaspreet Grewal",
+            "Shirish M Gadgeel",
+            "Rachel E Sanborn",
+            "Seok Jae Huh",
+            "Xiaohua Hu",
+            "Yihong Zhang",
+            "Ziyong Xiang",
+            "Laisheng Luo",
+            "Xiaoxi Xie",
+            "Zhe Shi",
+            "Yaolin Wang",
+            "Ling Zhang",
+            "Feng Wang",
+            "Rui-Hua Xu"
+        ],
+        "journal": "Signal transduction and targeted therapy",
+        "doi": "10.1038/s41392-025-02274-z",
+        "local_pdf": "data/pdfs\\40523897.pdf"
+    },
+    {
+        "pmid": "40448535",
+        "title": "Treating ",
+        "abstract": "The ",
+        "authors": [
+            "Kendra Wilson",
+            "Jesus Salvador Flores Banda",
+            "Fatima Raza",
+            "Sanjana Bukkapatnam",
+            "Sanjana Gangane",
+            "Erminia Massarelli"
+        ],
+        "journal": "Expert opinion on investigational drugs",
+        "doi": "10.1080/13543784.2025.2511175"
+    },
+    {
+        "pmid": "40421426",
+        "title": "Use of new approach methodology for hepatic safety assessment of covalent inhibitor drug candidates.",
+        "abstract": "Interest in inhibiting target proteins through covalent binding mechanisms has increased in the last decade due to the potential for beneficial pharmacological properties. However, the inherent targeted covalent inhibitor (TCI) adverse off-target reactivity risk requires a mitigation strategy early during drug discovery. The aim of this research was to design a pre-clinical hepatic safety assessment strategy for TCIs considering risk associated with electrophilic warhead reactivity and reactive metabolites formation at clinically-relevant plasma concentrations. The mitigation strategy was applied to compound 35, a potent irreversible inhibitor to KRAS",
+        "authors": [
+            "Sara Amberntsson",
+            "Alison J Foster",
+            "Bhavik Chouhan",
+            "Stephen Wilkinson",
+            "Stephanie Harlfinger",
+            "Graham Smith",
+            "Jason G Kettle",
+            "Michael Niedbala",
+            "Stefan Kavanagh",
+            "Dominic P Williams"
+        ],
+        "journal": "Toxicology research",
+        "doi": "10.1093/toxres/tfaf054"
+    },
+    {
+        "pmid": "40391409",
+        "title": "The structure of KRAS",
+        "abstract": "KRAS is the most frequently mutated oncogene in human cancer. In multiple types of cancer, a missense mutation at codon 12 substitutes a glycine for a cysteine, causing hyperactivation of the GTPase and enhanced MAPK signalling. Recent drug discovery efforts culminating from work during the past decade have resulted in two FDA-approved inhibitors, sotorasib and adagrasib, which target the KRAS",
+        "authors": [
+            "Micah C Fernando",
+            "Gregory B Craven",
+            "Kevan M Shokat"
+        ],
+        "journal": "Small GTPases",
+        "doi": "10.1080/21541248.2025.2505441",
+        "local_pdf": "data/pdfs\\40391409.pdf"
+    },
+    {
+        "pmid": "40381528",
+        "title": "Dealing with KRAS G12C inhibition in non-small cell lung cancer (NSCLC) - biology, clinical results and future directions.",
+        "abstract": "KRAS G12C mutation occurs in ∼ 14 % of non-small cell lung cancer (NSCLC) patients and has been historically deemed undruggable, with immune-checkpoint inhibitors (ICIs) and platinum-based chemotherapy (PBC) representing the standard-of-care in the advanced setting. First-in-class, covalent KRAS G12C OFF-inhibitors sotorasib and adagrasib have revolutionized the therapeutic landscape and recently entered clinical practice. However, limited efficacy alongside toxicity profiles strengthen the need to design novel molecules and to optimize therapeutic strategies to address and overcome intrinsic and acquired resistance mechanisms. Moreover, KRAS G12C frequently co-occurs with STK11/KEAP1 mutations, that represent a negative prognostic factor, being associated with increased metastatic potential and reduced overall survival and poorer outcomes with ICIs. Furthermore, the high incidence of brain metastases is common in KRAS G12C-mutant NSCLC, and the efficacy of standard therapies and KRAS G12C inhibitors in treating or preventing central nervous system involvement is still suboptimal. In this context, novel inhibitors, such as broad-spectrum inhibitors targeting the active GTP-bound ON-state, pan-RAS ON inhibitors and allele-selective tricomplex inhibitors, have showed promising early clinical activity although their clinical utility needs to be further elucidated. In addition, targeting upstream, downstream and parallel signaling pathways through combination strategies might enhance the activity of KRAS G12C inhibitors and eventually improve clinical outcomes in this subset of NSCLC patients. Several combinations are currently under clinical investigation and promising approaches include combinations of KRAS G12C inhibitors with ICIs, SOS1, SHP2 inhibitors and PBC. Notwithstanding the potential improved efficacy of combination strategies, tolerability remains a critical challenge that must be carefully assessed and managed.",
+        "authors": [
+            "Ilaria Attili",
+            "Carla Corvaja",
+            "Pamela Trillo Aliaga",
+            "Ester Del Signore",
+            "Gianluca Spitaleri",
+            "Antonio Passaro",
+            "Filippo de Marinis"
+        ],
+        "journal": "Cancer treatment reviews",
+        "doi": "10.1016/j.ctrv.2025.102957"
+    },
+    {
+        "pmid": "40381222",
+        "title": "Targeting KRAS",
+        "abstract": "The KRAS",
+        "authors": [
+            "Rui Li",
+            "Xu Huang",
+            "Rui Wang",
+            "Zhenhua Ren",
+            "Yong Zhu",
+            "Tao Lu",
+            "Yan Sun",
+            "Hao Cui"
+        ],
+        "journal": "European journal of medicinal chemistry",
+        "doi": "10.1016/j.ejmech.2025.117718"
+    },
+    {
+        "pmid": "40361439",
+        "title": "Targeting the KRAS Oncogene for Patients with Metastatic Colorectal Cancer.",
+        "abstract": "Colorectal cancer (CRC) is one of the most common cancers worldwide, with KRAS mutations occurring in approximately 40% of cases. These mutations drive tumorigenesis through the constitutive activation of key signaling pathways, such as RAS-RAF-MEK-ERK (MAPK) and PI3K-AKT-mTOR, contributing to therapeutic resistance and poor prognosis. Advances in molecular biology have led to significant breakthroughs, including the development of KRAS G12C inhibitors, such as sotorasib and adagrasib, which have shown promise in clinical trials. However, their efficacy is limited to a small subset of KRAS-mutant CRC, and resistance mechanisms often emerge through compensatory pathway activation. Combination strategies, including KRAS inhibitors with anti-EGFR agents, have been explored in trials like KRYSTAL-1 and CodeBreaK 300. Emerging research highlights the role of the tumor microenvironment in immune evasion and therapeutic resistance, offering opportunities for novel immunotherapy approaches, including KRAS neoantigen vaccines and adoptive T-cell therapy. Despite these advancements, challenges such as intratumoral heterogeneity, limited immune infiltration, and non-G12C KRAS mutations remain significant hurdles. This review provides a comprehensive overview of the molecular mechanisms, current advances and challenges, and future prospects in the management of KRAS-mutant CRC.",
+        "authors": [
+            "Ruoyu Miao",
+            "James Yu",
+            "Richard D Kim"
+        ],
+        "journal": "Cancers",
+        "doi": "10.3390/cancers17091512",
+        "local_pdf": "data/pdfs\\40361439.pdf"
+    },
+    {
+        "pmid": "40350441",
+        "title": "Dual inhibition of GTP-bound KRAS and mTOR in lung adenocarcinoma and squamous cell carcinoma harboring KRAS G12C.",
+        "abstract": "Kirsten rat sarcoma (KRAS) mutations are somatic variants in lung adenocarcinoma. One of the most prevalent mutations, G12C, has led to the clinical approval of targeted inhibitors for advanced stages in lung cancer. Research has increasingly focused on the efficacy of combination therapies that target multiple tumorigenic pathways. Cases harboring KRAS G12C mutation are heterogenous. We explored alternative changes in genetic pathways and evaluated the effectiveness of combination therapy using several types of cell lines and KRAS inhibitors.",
+        "authors": [
+            "Masaoki Ito",
+            "Yoshihiro Miyata",
+            "Shoko Hirano",
+            "Nagisa Morihara",
+            "Misako Takemoto",
+            "Fumiko Irisuna",
+            "Kei Kushitani",
+            "Kenichi Suda",
+            "Junichi Soh",
+            "Yukio Takeshima",
+            "Yasuhiro Tsutani",
+            "Morihito Okada"
+        ],
+        "journal": "Cell communication and signaling : CCS",
+        "doi": "10.1186/s12964-025-02187-y",
+        "local_pdf": "data/pdfs\\40350441.pdf"
+    },
+    {
+        "pmid": "40316534",
+        "title": "Anlotinib enhances the efficacy of KRAS-G12C inhibitors through c-Myc/ORC2 axis inhibition in non-small cell lung cancer.",
+        "abstract": "Non-small cell lung cancer (NSCLC) remains a leading cause of cancer-related mortality globally, with KRAS mutations present in approximately 20-25% of cases. The KRAS-G12C mutation, occurring in approximately 14% of lung adenocarcinomas, has emerged as a critical target for precision medicine strategies. While KRAS-G12C inhibitors, including sotorasib and adagrasib, have shown promise in clinical trials, their efficacy is limited by primary and acquired resistance mechanisms. This study explored the potential of combining anlotinib, a multi-target tyrosine kinase inhibitor, with KRAS-G12C inhibitors to overcome these resistance challenges in NSCLC treatment. Our results demonstrated that anlotinib improved the sensitivity to KRAS-G12C inhibitors in primary and acquired resistance settings, both in vitro and in vivo. Mechanistically, the combination therapy inhibited c-Myc/ORC2 signaling, leading to cell cycle arrest and apoptosis. These findings suggest that the combination of anlotinib and KRAS-G12C inhibitors represents a promising novel therapeutic approach for KRAS-G12C-mutant NSCLC.",
+        "authors": [
+            "Hongyu Liu",
+            "Chao Zhou",
+            "Jun Lu",
+            "Yuqing Liu",
+            "Peichen Zou",
+            "Liang Zhu",
+            "Huimin Lei",
+            "Baohui Han"
+        ],
+        "journal": "Cell death & disease",
+        "doi": "10.1038/s41419-025-07687-w",
+        "local_pdf": "data/pdfs\\40316534.pdf"
+    },
+    {
+        "pmid": "40303413",
+        "title": "Current status of KRAS G12C inhibitors in NSCLC and the potential for combination with anti-PD-(L)1 therapy: a systematic review.",
+        "abstract": "In recent years, precision medicine for non-small cell lung cancer (NSCLC) has made significant strides, particularly with advancements in diagnostic and therapeutic technologies. Targeted 7therapies and Anti-PD-(L)1 Therapies have emerged as vital treatment options, yet KRAS mutations, especially KRAS G12C, have been historically difficult to address. Due to the unique activation mechanism of KRAS G12C has led to the development of specific inhibitors, such as AMG 510 and MRTX849, which show promising therapeutic potential. However, results from the CodeBreaK 200 Phase III trial indicated that AMG 510 did not significantly improve overall survival compared to docetaxel. Resistance after prolonged use of KRAS G12C inhibitors continues to pose a challenge, prompting interest in new drugs and combination strategies. KRAS mutations can impair tumor-infiltrating T cell function and create an immunosuppressive tumor microenvironment, making the combination of KRAS G12C inhibitors with anti-PD-(L)1 therapies particularly appealing. Preliminary data suggest these combinations may enhance both survival and quality of life, though safety concerns remain a barrier. Ongoing research is crucial to refine treatment regimens and identify suitable patient populations. This review focuses on the development of KRAS G12C inhibitors in monotherapy and combination therapies for NSCLC, discussing major clinical trials and future research directions.",
+        "authors": [
+            "Fan Zhang",
+            "Banglu Wang",
+            "Menghuan Wu",
+            "Liwen Zhang",
+            "Mei Ji"
+        ],
+        "journal": "Frontiers in immunology",
+        "doi": "10.3389/fimmu.2025.1509173",
+        "local_pdf": "data/pdfs\\40303413.pdf"
+    },
+    {
+        "pmid": "40297021",
+        "title": "Potency and Safety of ",
+        "abstract": "The Kirsten rat sarcoma viral oncogene homolog (KRAS) gene, specifically the cysteine residue mutation ",
+        "authors": [
+            "Sara El Zaitouni",
+            "Abdelilah Laraqui",
+            "Youssra Boustany",
+            "Soukaina Benmokhtar",
+            "Hicham El Annaz",
+            "Rachid Abi",
+            "Mohamed Rida Tagajdid",
+            "Safae El Kochri",
+            "El Arbi Bouaiti",
+            "Idriss Lahlou Amine",
+            "Rabii Ameziane El Hassani",
+            "Khalid Ennibi"
+        ],
+        "journal": "Clinical Medicine Insights. Oncology",
+        "doi": "10.1177/11795549251331759"
+    },
+    {
+        "pmid": "40274247",
+        "title": "KRAS G12C inhibitors as monotherapy or in combination for metastatic colorectal cancer: A proportion and comparative meta-analysis of efficacy and toxicity from phase I-II-III trials.",
+        "abstract": "1-2 % of metastatic colorectal cancers (mCRC) harbor an activating KRAS-G12C mutation. This study aims to pool the results of available clinical trials of KRAS-G12C inhibitors, comparing monotherapy and combinations.",
+        "authors": [
+            "Erman Akkus",
+            "Nejat Emre Öksüz",
+            "Enes Erul"
+        ],
+        "journal": "Critical reviews in oncology/hematology",
+        "doi": "10.1016/j.critrevonc.2025.104741"
+    },
+    {
+        "pmid": "40256920",
+        "title": "Differential Response and Resistance to KRAS-Targeted Therapy.",
+        "abstract": "KRAS is the most frequently mutated oncogene. In epithelial malignancies such as lung, colorectal, and pancreatic tumors, KRAS is mutated in 25 to above 90% cases. KRAS was considered undruggable for over three decades until the recent development of covalent inhibitors targeting the KRAS G12C mutant. The recent approval of the KRAS G12C inhibitors sotorasib and adagrasib has ushered in a new era of KRAS-targeted therapy. Despite this success, a major challenge in KRAS-targeted therapy is intrinsic and acquired resistance to KRAS inhibitors. Clinical studies have shown that many patients with KRAS G12C cancers did not respond to sotorasib and adagrasib. Colorectal cancer, in particular, has a markedly lower response rate to KRAS G12C inhibitors compared to non-small cell lung cancer. Furthermore, the therapeutic response to KRAS G12C inhibition was short-lived, with quick emergence of acquired resistance. In this review, we summarize several major themes that have emerged from recent clinical and preclinical studies on the mechanisms of intrinsic and acquired resistance to KRAS-targeted therapy in colorectal, lung, and pancreatic cancers. We also discuss various combination strategies for targeting these mechanisms to overcome resistance to KRAS inhibitors.",
+        "authors": [
+            "Zhaojin Liu",
+            "Heinz-Josef Lenz",
+            "Jian Yu",
+            "Lin Zhang"
+        ],
+        "journal": "Molecular carcinogenesis",
+        "doi": "10.1002/mc.23908"
+    },
+    {
+        "pmid": "40230423",
+        "title": "Postoperative metastatic Krukenberg tumors with ",
+        "abstract": "Krukenberg tumors are a notably rare type of metastatic ovarian malignant tumor, often originating from the stomach. Due to their low incidence rate and the short survival time of patients, there is currently a lack of consensus on the diagnosis and treatment of this disease, as well as a deficiency in genomic analyses and research into the pathogenetic molecular mechanisms. In the present study, the case of a patient with gastric cancer who, 2 years after curative surgery and chemotherapy with oxaliplatin and tegafur, developed recurrent metastatic bilateral Krukenberg tumors with distant metastasis in the ovaries. During treatment, a total hysterectomy and bilateral salpingo-oophorectomy were performed, and intraoperative intraperitoneal chemotherapy with cisplatin (70 mg) was administered. Additionally, ureteroscopy and bilateral ureteral stent placement were conducted transurethrally. Post-surgery, assessments of the genomic alterations and microsatellite instability of the tumor revealed an AT-rich interaction domain 1A (",
+        "authors": [
+            "Jie Wu",
+            "Suzhen Jiang",
+            "Qingling Shen",
+            "Hongxia Gong"
+        ],
+        "journal": "Oncology letters",
+        "doi": "10.3892/ol.2025.15008",
+        "local_pdf": "data/pdfs\\40230423.pdf"
+    },
+    {
+        "pmid": "40204148",
+        "title": "Chaperone directed heterobifunctional molecules circumvent KRAS",
+        "abstract": "While KRAS",
+        "authors": [
+            "Ines Pulido",
+            "Qiyue Luan",
+            "Sara Pastor-Puente",
+            "Laura Gunder",
+            "Yaya Wang",
+            "Chenghao Ying",
+            "Jinhua Li",
+            "Yuetong Sun",
+            "Yan Dai",
+            "Christian Ascoli",
+            "Khaled Abdelhady",
+            "Malek Massad",
+            "Thomas L Prince",
+            "Guoqiang Wang",
+            "Kevin P Foley",
+            "Weiwen Ying",
+            "Ian Papautsky",
+            "Julian Carretero",
+            "Takeshi Shimamura"
+        ],
+        "journal": "Cancer letters",
+        "doi": "10.1016/j.canlet.2025.217691"
+    },
+    {
+        "pmid": "40180254",
+        "title": "Targeting USP47 enhances the efficacy of KRAS inhibitor in KRAS",
+        "abstract": "FDA-approved KRAS",
+        "authors": [
+            "Hyungkyung Shin",
+            "SuA Hwang",
+            "Jeong Hyun Jeong",
+            "Sang Chul Shin",
+            "Yeonji Oh",
+            "Jinhyeok Kim",
+            "Inah Hwang",
+            "Eunice EunKyeong Kim",
+            "Hyunah Choo",
+            "Eun Joo Song"
+        ],
+        "journal": "Pharmacological research",
+        "doi": "10.1016/j.phrs.2025.107722"
+    },
+    {
+        "pmid": "40174369",
+        "title": "Drugging the Undruggable and beyond: Emerging precision oncology approaches to target acquired resistance to KRAS G12C and KRAS G12D inhibitors.",
+        "abstract": "Development of mutant specific KRAS inhibitors validated KRAS as a 'druggable' target. However, excellent initial efficacy was eventually overshadowed by failure to exhibit sustained clinical response, primarily due to acquired resistance. Some targeted therapies like SOS1, SHP2, and MEK inhibitors, in combination with mutant KRAS G12C inhibitors (G12Ci), are currently under clinical investigation with evidences of improving efficacy. However, a deep understanding of the underlying molecular pathways behind the acquired resistance is still at a nascent stage. Recent preclinical studies have uncovered a role of novel proteins and pathways responsible for resistance and their inhibition demonstrated a robust anticancer efficacy in combination. Plethora of combination therapy approaches are now being proposed with emergence of AXL, ULK1, Tissue factor, farnesyltransferase, etc. as targets to counter G12Ci resistance. This review summarizes in a comprehensive manner, some of the novel combination modalities to overcome G12Ci resistance, based on current understanding and with great potential to hit clinical success. Along with G12C, KRAS G12D (G12D) was also considered a formidable foe, until the discovery of selective inhibitors. However, eventual clinical resistance can eclipse the early success and requires an in-depth understanding of resistance mechanisms. Evidences of G12Ci resistance can be exploited as probable combination strategies to tackle ensuing resistance to G12D inhibitors (G12Di), and can translate in superior clinical efficacy. Early preclinical studies of G12Di in combination with ERBB, SOS1, AKT and immune-checkpoints inhibitors indicate encouraging response. This review further describes some of the early affirmations on combination strategies with G12Di. We postulate to go beyond 'Drugging the Undruggable' with advanced combination approaches mitigating G12C and G12D inhibitor resistance.",
+        "authors": [
+            "Ramesh Kale",
+            "Charudatt Samant",
+            "Krishnadas Nandakumar",
+            "K Sreedhara Ranganath Pai",
+            "Mandar Bhonde"
+        ],
+        "journal": "Biochemical and biophysical research communications",
+        "doi": "10.1016/j.bbrc.2025.151688"
+    },
+    {
+        "pmid": "40172157",
+        "title": "Advances in the treatment of KRAS",
+        "abstract": "Kirsten rat sarcoma (KRAS) is one of the most frequently mutated oncogenic drivers in metastatic non-small cell lung cancer (NSCLC). The development of selective, covalent KRAS G12C (KRAS",
+        "authors": [
+            "Khvaramze Shaverdashvili",
+            "Timothy F Burns"
+        ],
+        "journal": "Cancer",
+        "doi": "10.1002/cncr.35783",
+        "local_pdf": "data/pdfs\\40172157.pdf"
+    },
+    {
+        "pmid": "40160736",
+        "title": "Correction to \"Combining Fundamental Kinetics and Standard Alkylation Assays to Prioritize Lead-like KRAS G12C Inhibitors\".",
+        "abstract": "[This corrects the article DOI: 10.1021/acsomega.4c08774.].",
+        "authors": [
+            "Alexandra Frommlet",
+            "Lan K Nguyen",
+            "Matt Saabye",
+            "Nicholas F Endres",
+            "Melinda M Mulvihill",
+            "John G Quinn"
+        ],
+        "journal": "ACS omega",
+        "doi": "10.1021/acsomega.5c01467"
+    }
+]

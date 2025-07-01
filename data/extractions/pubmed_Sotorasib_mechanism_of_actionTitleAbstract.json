@@ -1,0 +1,102 @@
+[
+    {
+        "pmid": "39971904",
+        "title": "Mass spectrometry methods and mathematical PK/PD model for decision tree-guided covalent drug development.",
+        "abstract": "Covalent drug discovery efforts are growing rapidly but have major unaddressed limitations. These include high false positive rates during hit-to-lead identification; the inherent uncoupling of covalent drug concentration and effect [i.e., uncoupling of pharmacokinetics (PK) and pharmacodynamics (PD)]; and a lack of bioanalytical and modeling methods for determining PK and PD parameters. We present a covalent drug discovery workflow that addresses these limitations. Our bioanalytical methods are based upon a mass spectrometry (MS) assay that can measure the percentage of drug-target protein conjugation (% target engagement) in biological matrices. Further we develop an intact protein PK/PD model (iPK/PD) that outputs PK parameters (absorption and distribution) as well as PD parameters (mechanism of action, protein metabolic half-lives, dose, regimen, effect) based on time-dependent target engagement data. Notably, the iPK/PD model is applicable to any measurement (e.g., bottom-up MS and other drug binding studies) that yields % of target engaged. A Decision Tree is presented to guide researchers through the covalent drug development process. Our bioanalytical methods and the Decision Tree are applied to two approved drugs (ibrutinib and sotorasib); the most common plasma off-target, human serum albumin; three protein targets (KRAS, BTK, SOD1), and to a promising SOD1-targeting ALS drug candidates.",
+        "authors": [
+            "Md Amin Hossain",
+            "Rutali R Brahme",
+            "Brandon C Miller",
+            "Jakal Amin",
+            "Marcela de Barros",
+            "Jaime L Schneider",
+            "Jared R Auclair",
+            "Carla Mattos",
+            "Qingping Wang",
+            "Nathalie Y R Agar",
+            "David J Greenblatt",
+            "Roman Manetsch",
+            "Jeffrey N Agar"
+        ],
+        "journal": "Nature communications",
+        "doi": "10.1038/s41467-025-56985-6",
+        "local_pdf": "data/pdfs\\39971904.pdf"
+    },
+    {
+        "pmid": "39301544",
+        "title": "Mechanisms of resistance to KRASG12C inhibitors in KRASG12C-mutated non-small cell lung cancer.",
+        "abstract": "The KRAS protein, a product of the KRAS gene (V-ki-ras2 Kirsten rat sarcoma viral oncogene homolog), functions as a small GTPase that alternates between an active GTP-bound state (KRAS(ON)) and an inactive GDP-bound state (KRAS(OFF)). The ",
+        "authors": [
+            "Ali Chour",
+            "Anne-Claire Toffart",
+            "Elodie Berton",
+            "Michael Duruisseaux"
+        ],
+        "journal": "Frontiers in oncology",
+        "doi": "10.3389/fonc.2024.1328728",
+        "local_pdf": "data/pdfs\\39301544.pdf"
+    },
+    {
+        "pmid": "37627169",
+        "title": "Proteomic Mapping of the Interactome of KRAS Mutants Identifies New Features of RAS Signalling Networks and the Mechanism of Action of Sotorasib.",
+        "abstract": "RAS proteins are key regulators of cell signalling and control different cell functions including cell proliferation, differentiation, and cell death. Point mutations in the genes of this family are common, particularly in ",
+        "authors": [
+            "Aoife Nolan",
+            "Cinzia Raso",
+            "Walter Kolch",
+            "Alex von Kriegsheim",
+            "Kieran Wynne",
+            "David Matallanas"
+        ],
+        "journal": "Cancers",
+        "doi": "10.3390/cancers15164141",
+        "local_pdf": "data/pdfs\\37627169.pdf"
+    },
+    {
+        "pmid": "37190303",
+        "title": "The Therapeutic Landscape for ",
+        "abstract": "Colorectal cancer is one of the world's most prevalent and lethal cancers. Mutations of the KRAS gene occur in ~40% of metastatic colorectal cancers. While this cohort has historically been difficult to manage, the last few years have shown exponential growth in the development of selective inhibitors targeting KRAS mutations. Their foremost mechanism of action utilizes the Switch II binding pocket and Cys12 residue of GDP-bound KRAS proteins in G12C mutants, confining them to their inactive state. Sotorasib and Adagrasib, both FDA-approved for the treatment of non-small cell lung cancer (NSCLC), have been pivotal in paving the way for KRAS G12C inhibitors in the clinical setting. Other KRAS inhibitors in development include a multi-targeting KRAS-mutant drug and a G12D mutant drug. Treatment resistance remains an issue with combination treatment regimens including indirect pathway inhibition and immunotherapy providing possible ways to combat this. While KRAS-mutant selective therapy has come a long way, more work is required to make this an effective and viable option for patients with colorectal cancer.",
+        "authors": [
+            "Simon Manuel Tria",
+            "Matthew E Burge",
+            "Vicki L J Whitehall"
+        ],
+        "journal": "Cancers",
+        "doi": "10.3390/cancers15082375"
+    },
+    {
+        "pmid": "37005530",
+        "title": "First Approval of Adagrasib for the Treatment of Non-Small Cell Lung Cancer Harboring a ",
+        "abstract": "Adagrasib is an orally bioavailable, highly selective, small-molecule, irreversible covalent inhibitor of KRAS</i><sup>G12C</sup>. It was approved by the US FDA on December 12, 2022, for patients with tumors harboring the KRAS</i><sup>G12C</sup> mutation in locally advanced or metastatic non-small cell lung cancer (NSCLC). Herein, synthesis, dosage and administration, mechanism of action, pharmacokinetics, pharmacodynamics, and adverse events of adagrasib are described.",
+        "authors": [
+            "Surya K De"
+        ],
+        "journal": "Current medicinal chemistry",
+        "doi": "10.2174/0929867330666230330122000"
+    },
+    {
+        "pmid": "36082871",
+        "title": "Sotorasib: First Approved ",
+        "abstract": "No Abstract",
+        "authors": [
+            "Surya K De"
+        ],
+        "journal": "Current medicinal chemistry",
+        "doi": "10.2174/0929867329666220907161505"
+    },
+    {
+        "pmid": "35412531",
+        "title": "Sotorasib: a treatment for non-small cell lung cancer with the KRAS G12C mutation.",
+        "abstract": "Sotorasib, a direct inhibitor of the enzyme Kirsten rat sarcoma viral oncogene (KRAS) with the G12C mutation, was approved by the U.S. Food and Drug Administration (FDA), as a second-line treatment for locally advanced or metastatic non-small cell lung cancer (NSCLC) containing the KRAS G12C mutation, on the basis of results of a phase II clinical trial (Code- BreaK100). In this article, we review the mechanism of action of KRAS G12C inhibitors and the latest clinical trials with sotorasib to provide a comprehensive understanding of its efficacy and toxicity. We also review the mechanisms that produce resistance to the KRAS G12C inhibitors and the preclinical research related to combination treatments for KRAS G12C-mutated tumors. Currently, clinical data suggests that sotorasib monotherapy has significant efficacy in NSCLC patients with the KRAS G12C mutation and tolerable toxicity, and it could represent a novel targeted therapy. Additional research will be required to delineate the mechanisms of resistance to sotorasib and determine the efficacy and safety of combination therapy for the treatment of NSCLC containing the KRAS G12C mutation.",
+        "authors": [
+            "Xinting Zheng",
+            "Jiamin Luo",
+            "Wei Liu",
+            "Charles R Ashby",
+            "Zhe-Sheng Chen",
+            "Lizhu Lin"
+        ],
+        "journal": "Drugs of today (Barcelona, Spain : 1998)",
+        "doi": "10.1358/dot.2022.58.4.3400573"
+    }
+]

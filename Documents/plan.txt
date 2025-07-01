@@ -1,0 +1,60 @@
+📌 2025 AI 기반 바이오 신약 개발 통합 프로세스
+
+① 문헌 · 데이터 수집 & 지식 그래프 구축 📚
+전세계 오픈액세스 논문 + 기업 특허 + 임상 DB 동시 크롤링
+Perplexity Scholar, Semantic Scholar API v3, PubMed Central Bulk API
+LLM 기반 다중 요약·태깅: GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro
+그래프-RAG(Neo4j v6 + GraphRAG 파이프라인)로 질문-답변 지식그래프 자동화
+멀티모달 OCR: PaddleOCR 2025 + Vision Transformer(ViT-4)
+→ 연구자 자연어 쿼리 → 구조화된 생물학 지식 그래프 1-클릭 생성
+
+② 가설 생성 & 실험 설계 자동화 🧪
+Auto-Hypothesis Agent: Gemini 2.5 Flash-Lite + Bayesian Optimization(Ax 0.4)
+단백질 구조·기능 예측: AlphaFold 3 (오픈소스 출시) / Enformer-2(유전체 조절)
+크리스퍼·합성생물학 디자인: Benchling 2025 AI Suite, CRISPick-v3
+Protocol-GPT: 실험 SOP를 Markdown/JSON-LD로 자동 생성
+
+③ In Silico Simulation 🔬
+Docking: AutoDock Vina 3, Schrödinger Glide 2025-2
+Molecular Dynamics: GROMACS 2026-pre GPU, OpenMM 8 + AlphaFold-MD-Diffusion
+Quantum MD: IBM Qiskit Molecular Sim 0.7 (양자 가속)
+시뮬레이션 후처리: Graph Neural Network Analyzer(PyTorch Geometric 3)
+→ 결합에너지·안정성 예측을 자동 리포트로 시각화
+
+④ AI 후보 물질 생성 & 스크리닝 💊
+분자 생성: ChemGPT-3, MolGen-Diffusion (MoFlow-v2)
+거대 가상 라이브러리 스캔: Deep Docking Cloud(>1012 화합물/주)
+ADMET 예측: DeepChem 3.0, GraphDRUG 2.0, PhysNet-XL
+합성경로 AI: IBM RXN 2025, Iktos Spaya 2
+→ TOP-K (예: 500 개) 후보를 다음 단계로 전달
+
+⑤ 실험적 검증 & 데이터 해석 📊
+로봇 자동화 실험실(LabOps): Opentrons Flex + Biosero Green Button Go
+이미지/시퀀스 멀티모달 분석: CLIP-Bio Large, ViT-Bio Next
+AutoML 분석: PyCaret 3, XGBoost-DART 2025
+실험 피드백을 Knowledge Graph에 실시간 역주입(RAG-Loop)
+
+⑥ 논문·규제 문서 자동 작성 & 지속적 연구 업데이트 📝
+Paper-Agent: GPT-4o (논문 구조 템플릿) + Gemini 2.5 Citation Manager
+저널 스타일 자동 포맷: Overleaf 2025 AI, Authorea Next
+Connected Papers API v2로 관련 연구 알림 스트림
+규제 패키지(IND/IMPD) 초안 자동화: Reg-GPT Suite
+
+
+🔄 엔드-투-엔드 워크플로우 자동화
+LLM 에이전트 오케스트레이션: LangGraph + Prefect 2
+데이터레이크: AWS HealthLake ←→ Neo4j KG 양방향 싱크
+모델 서빙: Kubernetes + NVIDIA Triton, 온디맨드 GPU/퀀텀리소스 스케줄링
+모델 모니터링: Evidently AI 2025, WhyLabs-Bio
+
+✅ 최신 트렌드 & 향후 전망
+멀티모달 LLM(텍스트+이미지+시뮬레이션 시계열)로 실험 의사결정 가속
+오픈소스 AlphaFold 3 확산 → AI-기반 약물-표적 상호작용 모델 보편화
+양자 컴퓨팅 도입으로 대규모 MD 시뮬레이션 시간 10× 단축 예상
+그래프-RAG 파이프라인이 지식 재사용·추론 정확도 향상
+
+🎯 기대 효과
+연구기간: 기존 10-15년 → 3-5년
+후보물질 발굴비용: 최대 70% 절감
+임상 진입 성공률: AI-기반 타깃 정확도 향상으로 2× 상승 예측
+이 재설계 프로세스를 기준으로 구체적인 파이프라인 구축이나 툴 선정이 필요하면 추가로 알려주세요!

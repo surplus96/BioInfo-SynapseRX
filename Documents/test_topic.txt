@@ -1,0 +1,36 @@
+
+**"KRAS 유전자와 항암 억제제 (KRAS and Cancer Inhibitors)"**
+---
+1.  **풍부한 문헌 데이터 (1단계: 데이터 수집)**
+    *   KRAS는 가장 먼저 발견된 종양 유전자(Oncogene) 중 하나로, 수십 년간 방대한 연구가 축적되었습니다. PubMed 등에서 관련 논문을 쉽게, 그리고 많이 찾을 수 있습니다.
+
+2.  **명확하고 다양한 개체(Entity) 포함 (3단계: 지식 추출)**
+    *   추출해야 할 개체의 종류가 명확하게 드러납니다.
+        *   **유전자/단백질:** `KRAS`
+        *   **질병:** `Pancreatic Cancer` (췌장암), `Lung Cancer` (폐암), `Colorectal Cancer` (대장암)
+        *   **의약품/화합물:** `Sotorasib` (소토라십), `Adagrasib` (아다그라십)
+        *   **돌연변이:** `G12C`, `G12D`
+
+3.  **검증 가능한 명확한 관계 (4단계: 지식 그래프 검증)**
+    *   개체들 간의 관계가 잘 알려져 있어, 우리 파이프라인이 지식 그래프를 올바르게 구축했는지 검증하기 용이합니다.
+    *   **(검증 예시)**
+        *   `Sotorasib` --\[INHIBITS (억제한다)]--> `KRAS G12C`
+        *   `KRAS G12C` --\[IS_A_MUTATION_OF (돌연변이이다)]--> `KRAS`
+        *   `KRAS` --\[ASSOCIATED_WITH (연관있다)]--> `Pancreatic Cancer`
+
+---
+
+#### **테스트를 위한 추천 검색어**
+
+이 토픽으로 프로젝트를 진행하실 때, 아래 검색어들을 `main.py`의 `search_queries` 리스트에 넣어 사용하시면 일관된 테스트가 가능합니다.
+
+```python
+# main.py의 search_queries 리스트 예시
+search_queries = [
+    "KRAS G12C inhibitors[Title/Abstract]",
+    "Sotorasib mechanism of action[Title/Abstract]",
+    "KRAS mutations in pancreatic cancer[Title/Abstract]"
+]
+```
+
+이 토픽을 사용하면 1단계부터 마지막 4단계까지 데이터의 흐름과 AI의 분석 결과를 명확하게 추적하고 평가할 수 있어 전체 시스템을 개발하고 디버깅하는 데 큰 도움이 될 것입니다.
