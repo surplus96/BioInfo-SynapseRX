@@ -14,7 +14,7 @@
 ### ** 기능 소개**
 
 <details>
-<summary><b>1. Bio-Knowledge-miner</b></summary>
+<summary><b>1. Bio-Knowledge-Miner</b></summary>
 
 [README](https://github.com/surplus96/BioInfo-Projects/blob/main/bio_knowledge_miner/README.md)
 
