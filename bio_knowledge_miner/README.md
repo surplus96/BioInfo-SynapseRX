@@ -104,16 +104,10 @@ RETURN c,g LIMIT 20;
 MATCH (g:Gene {name:'KRAS'})-[:ASSOCIATED_WITH]->(d:Disease)
 RETURN d;
 ```
-
-Python helper:
-```python
-from bio_knowledge_miner_pkg.knowledge_graph.graph_rag_query import search_by_keyword
-print(search_by_keyword("KRAS"))
-```
-
 ---
 
 ## Example Result
+Keyword: KRAS G12C inhibitors
 <img src="https://github.com/surplus96/BioInfo-Projects/blob/main/data/result/KRAS_knowledge_network.png">
 
 ## License
