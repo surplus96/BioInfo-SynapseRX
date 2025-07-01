@@ -2,10 +2,6 @@
 
 End-to-end **Literature ➜ Knowledge-Graph** pipeline powered by AI.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Neo4j-GraphAcademy/graphgists/master/images/knowledge-graph.png" width="550"/>
-</p>
-
 ---
 ## Features
 | Stage | Directory | Description |
