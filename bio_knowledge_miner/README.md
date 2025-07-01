@@ -113,7 +113,7 @@ Keyword: KRAS G12C inhibitors
 - Orange = compound
 - Purple = disease
 
-[JSON](https://github.com/surplus96/BioInfo-Projects/blob/main/bio_knowledge_miner/README.md)
+[JSON](https://github.com/surplus96/BioInfo-Projects/blob/main/data/extractions/pdf_entities_summary_20250701.json)
 
 <img src="https://github.com/surplus96/BioInfo-Projects/blob/main/data/result/KRAS_knowledge_network.png">
 
