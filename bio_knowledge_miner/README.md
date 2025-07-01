@@ -20,7 +20,7 @@ End-to-end **Literature ➜ Knowledge-Graph** pipeline powered by AI.
 ## Project Layout
 ```
 /bio-knowledge-miner/
-├── main.py                 # 整個 파이프라인을 실행하는 메인 스크립트
+├── main.py                 # 파이프라인을 실행하는 메인 스크립트
 ├── config.py               # API 키, DB 접속 정보, 파일 경로 등 설정 관리
 ├── requirements.txt        # 프로젝트에 필요한 모든 파이썬 라이브러리 목록
 ├── .env                    # (Git 무시) 실제 API 키와 비밀번호 저장
