@@ -110,8 +110,8 @@ RETURN d;
 Keyword: KRAS G12C inhibitors
 
 - Blue = gene
-- Orange = compound
-- Purple = disease
+- Orange = disease
+- Purple = compound
 
 [JSON](https://github.com/surplus96/BioInfo-Projects/blob/main/data/extractions/pdf_entities_summary_20250701.json)
 
