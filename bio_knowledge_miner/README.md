@@ -108,6 +108,11 @@ RETURN d;
 
 ## Example Result
 Keyword: KRAS G12C inhibitors
+
+- Blue = gene
+- Orange = compound
+- Purple = disease
+
 <img src="https://github.com/surplus96/BioInfo-Projects/blob/main/data/result/KRAS_knowledge_network.png">
 
 ## License
