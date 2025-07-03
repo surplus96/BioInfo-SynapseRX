@@ -2,6 +2,10 @@
 
 End-to-end **Literature ➜ Knowledge-Graph** pipeline powered by AI.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Neo4j-GraphAcademy/graphgists/master/images/knowledge-graph.png" width="550"/>
+</p>
+
 ---
 ## Features
 | Stage | Directory | Description |
@@ -16,7 +20,7 @@ End-to-end **Literature ➜ Knowledge-Graph** pipeline powered by AI.
 ## Project Layout
 ```
 /bio-knowledge-miner/
-├── main.py                 # 파이프라인을 실행하는 메인 스크립트
+├── main.py                 # 整個 파이프라인을 실행하는 메인 스크립트
 ├── config.py               # API 키, DB 접속 정보, 파일 경로 등 설정 관리
 ├── requirements.txt        # 프로젝트에 필요한 모든 파이썬 라이브러리 목록
 ├── .env                    # (Git 무시) 실제 API 키와 비밀번호 저장
@@ -97,25 +101,20 @@ Execution flow:
 ## Neo4j Query Examples
 ```cypher
 // list genes targeted by a compound
-MATCH (c:Compound)-[:TARGETS]->(g:Gene)
-RETURN c,g LIMIT 20;
+MATCH (c:Compound)-[:TARGETS]->(g:Gene)-[:ASSOCIATED_WITH]->(d:Disease)
+RETURN c,g,d
 
 // KRAS-related diseases
 MATCH (g:Gene {name:'KRAS'})-[:ASSOCIATED_WITH]->(d:Disease)
 RETURN d;
 ```
+
+Python helper:
+```python
+from bio_knowledge_miner_pkg.knowledge_graph.graph_rag_query import search_by_keyword
+print(search_by_keyword("KRAS"))
+```
+
 ---
-
-## Example Result
-Keyword: KRAS G12C inhibitors
-
-- Blue = gene
-- Orange = disease
-- Purple = compound
-
-[JSON](https://github.com/surplus96/BioInfo-Projects/blob/main/data/extractions/pdf_entities_summary_20250701.json)
-
-<img src="https://github.com/surplus96/BioInfo-Projects/blob/main/data/result/KRAS_knowledge_network.png">
-
 ## License
 MIT 

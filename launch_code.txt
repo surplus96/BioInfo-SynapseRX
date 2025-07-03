@@ -1,0 +1,22 @@
+<Installation>
+
+sudo apt update
+sudo apt install python3.10 python3.10-venv python3.10-distutils -y
+
+# 가상환경 생성
+python3.10 -m venv ~/bioinfo310
+source ~/bioinfo310/bin/activate
+python -V   # 3.10.x 확인
+
+# 이후 의존성 설치
+pip install --upgrade pip
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install "git+https://github.com/HeliXonProtein/OmegaFold.git"
+pip install -r requirements.txt
+
+
+<Launch>
+
+1. python run_bio_knowledge_miner.py
+2. python -m bio_knowledge_miner.maintenance.clean_gene_nodes
+3. python run_auto_hypothesis_agent.py --topic "KRAS" --n_hypo 2

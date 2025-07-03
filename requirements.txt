@@ -1,6 +1,6 @@
 requests
 beautifulsoup4
-semantic-scholar-api
+# semantic-scholar-api 패키지는 PyPI에 존재하지 않아 삭제
 pubmed-lookup
 PyMuPDF
 pdfplumber
@@ -17,3 +17,7 @@ python-dotenv
 neo4j
 tqdm
 crossrefapi
+ax-platform
+pydantic
+biopython
+

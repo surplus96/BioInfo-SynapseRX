@@ -3,7 +3,7 @@
 ① 문헌 · 데이터 수집 & 지식 그래프 구축 📚
 전세계 오픈액세스 논문 + 기업 특허 + 임상 DB 동시 크롤링
 Perplexity Scholar, Semantic Scholar API v3, PubMed Central Bulk API
-LLM 기반 다중 요약·태깅: GPT-4-turbo, Claude 3.5 Sonnet, Gemini 2.5 Pro
+LLM 기반 다중 요약·태깅: GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Pro
 그래프-RAG(Neo4j v6 + GraphRAG 파이프라인)로 질문-답변 지식그래프 자동화
 멀티모달 OCR: PaddleOCR 2025 + Vision Transformer(ViT-4)
 → 연구자 자연어 쿼리 → 구조화된 생물학 지식 그래프 1-클릭 생성
