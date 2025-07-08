@@ -153,6 +153,8 @@ BioInfo-SynapseRX/
     ```bash
     ls -R outputs/
     ```
+    [Final_Result](https://github.com/surplus96/BioInfo-SynapseRX/blob/main/outputs/reports/screening_report_KRAS_KRAS_G12C_20250708134950.csv)
+    
 
 ## 라이선스
 
