@@ -1,4 +1,4 @@
-# Bio-Info: AI 기반 신약 개발 플랫폼
+# SynapseRX
 
 [![Code License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
