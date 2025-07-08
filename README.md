@@ -17,7 +17,7 @@ SynapseRX는 최신 AI 기술을 활용하여 신약 개발의 초기 단계, �
 ## 프로젝트 구조
 
 ```
-Bio-Info/
+BioInfo-SynapseRX/
 ├── auto_hypothesis_agent/     # 가설 생성 및 검증 에이전트
 │   ├── pipelines/             # 화합물 스크리닝 등 자동화 파이프라인
 │   ├── simulation/            # 분자 도킹, 결합 에너지 계산 등 시뮬레이션
