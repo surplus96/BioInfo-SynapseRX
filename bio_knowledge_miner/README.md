@@ -150,11 +150,12 @@ MATCH (g:Gene {name:'KRAS'})-[:ASSOCIATED_WITH]->(d:Disease)
 RETURN d;
 ```
 
-Python helper:
-```python
-from bio_knowledge_miner_pkg.knowledge_graph.graph_rag_query import search_by_keyword
-print(search_by_keyword("KRAS"))
 ```
+![image](https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-01.png)
+
+
+![image](https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-02.png)
+
 
 ---
 ## License
