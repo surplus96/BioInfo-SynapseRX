@@ -116,12 +116,5 @@ ALPHAFOLD_ENDPOINT = "https://api.af3.example.com/predict"
 python -m auto_hypothesis_agent.pipelines.auto_hypothesis_pipeline --topic "KRAS G12C inhibitor" --n_hypo 1
 ```
 
----
-## ⌛ 향후 로드맵
-- [ ] 멀티-objective BO (정보 이득 + 비용)
-- [ ] Wet-lab 로봇 통제 API 연동
-- [ ] Streamlit UI로 Hypothesis Dashboard 제공
-
----
 ## 📝 라이선스
 MIT 
