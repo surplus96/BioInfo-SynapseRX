@@ -1,14 +1,10 @@
-# SynapseRX
+# Bio-Info: AI 기반 신약 개발 플랫폼
 
 [![Code License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## 개요
 
-SynapseRX (시냅스알엑스)
-
-의미 및 컨셉: 뇌의 신경세포 연결부인 '시냅스(Synapse)'처럼, 흩어진 생물의학 정보들을 연결하여 지식 그래프를 만들고, 이를 통해 새로운 통찰(후보 물질)을 얻어낸다는 의미를 담고 있습니다. 'RX'는 약학, 처방전을 상징하는 대표적인 기호
-
-SynapseRX는 최신 AI 기술을 활용하여 신약 개발의 초기 단계, 특히 후보 물질 발굴 및 최적화 과정을 자동화하고 가속화하는 것을 목표로 하는 오픈소스 플랫폼입니다. 이 프로젝트는 크게 두 가지 핵심 모듈로 구성됩니다.
+Bio-Info는 최신 AI 기술을 활용하여 신약 개발의 초기 단계, 특히 후보 물질 발굴 및 최적화 과정을 자동화하고 가속화하는 것을 목표로 하는 오픈소스 플랫폼입니다. 이 프로젝트는 크게 두 가지 핵심 모듈로 구성됩니다.
 
 1.  **`bio_knowledge_miner`**: 방대한 생물학 및 화학 문헌, 데이터베이스에서 정보를 수집, 처리하고 지식 그래프(Knowledge Graph)를 구축하여 신약 개발에 필요한 지식을 체계적으로 축적합니다.
 2.  **`auto_hypothesis_agent`**: 구축된 지식 그래프를 기반으로 특정 질병 타겟(예: KRAS G12C)에 대한 치료 가설을 설정하고, 가상 스크리닝(Virtual Screening) 파이프라인을 통해 유효 화합물을 발굴하며, 실험 계획을 자동 설계합니다.
@@ -45,14 +41,18 @@ Bio-Info/
 
 ### 요구사항
 
-*   Python 3.9+
-*   Docker 및 Docker Compose (Neo4j 데이터베이스 구동용)
-*   분자 시뮬레이션을 위한 외부 도구:
-    *   [fpocket](https://github.com/Discngine/fpocket)
-    *   [AutoDock Vina](https://vina.scripps.edu/)
-    *   [Open Babel](http://openbabel.org/)
+*   **OS**: Linux 또는 WSL2 (Ubuntu 22.04 권장)
+*   **Python**: `setup_pip_env.sh` 스크립트를 통해 Python 3.10이 자동 설치됩니다.
+*   **필수 도구**: `git`, `curl`, `build-essential`
+    ```bash
+    sudo apt-get update && sudo apt-get install -y git curl build-essential
+    ```
+*   **Docker**: Neo4j 데이터베이스 구동을 위해 [Docker](https://docs.docker.com/engine/install/) 및 [Docker Compose](https://docs.docker.com/compose/install/)가 필요합니다.
+*   **GPU**: 분자 시뮬레이션 및 딥러닝 모델(예: OmegaFold) 가속을 위해 NVIDIA GPU(VRAM 10GB 이상) 및 CUDA 12.1 호환 드라이버 설치를 권장합니다.
 
 ### 설치
+
+프로젝트 설정의 모든 과정은 `setup_pip_env.sh` 스크립트에 자동화되어 있습니다.
 
 1.  **프로젝트 클론:**
     ```bash
@@ -60,109 +60,80 @@ Bio-Info/
     cd Bio-Info
     ```
 
-2.  **Python 가상환경 생성 및 활성화:**
+2.  **설치 스크립트 실행:**
+    스크립트를 실행하여 Python 가상환경(`bio-info-pip`)을 생성하고 모든 필수 패키지 및 외부 도구를 설치합니다.
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # Linux/macOS
-    # venv\Scripts\activate  # Windows
+    bash setup_pip_env.sh
     ```
-
-3.  **필요한 패키지 설치:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **외부 도구 설치:**
-    시스템에 `fpocket`, `vina`, `obabel`을 설치하고, 환경 변수 `PATH`에 해당 실행 파일이 있는 경로를 추가해야 합니다.
-
-    *   **conda를 사용하는 경우 (권장):**
-        ```bash
-        conda install -c conda-forge vina openbabel fpocket
-        ```
+    > **참고**: 이 스크립트는 다음 작업을 수행합니다:
+    > *   Python 3.10 및 가상환경 설정
+    > *   PyTorch (CUDA 12.1), `requirements.txt` 패키지 설치
+    > *   단백질 구조 예측을 위한 `OmegaFold` 및 모델 가중치 설치
+    > *   단백질 포켓 분석을 위한 `fpocket` 소스 코드 컴파일 및 설치
 
 ### 실행
 
-1.  **Neo4j 데이터베이스 실행:**
+1.  **가상환경 활성화:**
+    터미널 세션을 새로 시작할 때마다 다음 명령어를 실행하여 가상환경을 활성화해야 합니다.
+    ```bash
+    source bio-info-pip/bin/activate
+    ```
+
+2.  **Neo4j 데이터베이스 실행:**
     프로젝트 루트 디렉터리에서 Docker Compose를 사용하여 Neo4j 컨테이너를 실행합니다.
     ```bash
     docker-compose up -d
     ```
 
-2.  **화합물 스크리닝 파이프라인 실행:**
-    `auto_hypothesis_agent` 모듈의 메인 파이프라인을 실행하여 KRAS G12C 저해제 스크리닝을 시작할 수 있습니다.
+3.  **환경 변수 설정:**
+    프로젝트 루트 디렉터리에 `.env` 파일을 생성하고 아래 내용을 채워넣으세요.
     ```bash
-    python -m auto_hypothesis_agent.pipelines.compound_screen_pipeline
+    cat > .env << EOF
+# OpenAI API
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Neo4j 설정
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=password
+
+# 외부 도구 경로 (선택사항, setup_pip_env.sh가 자동 설정 시도)
+AUTODOCK_VINA_BIN=/usr/local/bin/vina
+OMEGAFOLD_BIN=/usr/local/bin/omegafold
+EOF
     ```
-    스크리닝이 완료되면 결과는 `outputs/reports/` 디렉터리에 CSV 파일로 저장됩니다.
+
+4.  **전체 파이프라인 실행:**
+    다음 스크립트를 순서대로 실행하여 전체 워크플로우를 진행합니다.
+
+    *   **1단계: 지식 수집 및 그래프 구축**
+        ```bash
+        # PubMed 등에서 문헌 데이터를 수집하고 LLM으로 엔티티를 추출하여 지식 그래프에 저장
+        python run_bio_knowledge_miner.py
+        
+        # 지식 그래프의 유전자 노드 정보 보강
+        python bio_knowledge_miner/maintenance/clean_gene_nodes.py
+        python -m bio_knowledge_miner.maintenance.annotate_variants
+        
+        # 특정 유전자 관련 화합물 구조 정보 채우기
+        python -m bio_knowledge_miner.maintenance.fill_compound_structures --gene KRAS
+        ```
+
+    *   **2단계: 가설 생성 및 가상 스크리닝**
+        ```bash
+        # KRAS G12C 저해제에 대한 가설 생성 및 구조 예측
+        python run_auto_hypothesis_agent.py --topic "KRAS G12C inhibitor" --n_hypo 1
+        
+        # 생성된 가설을 바탕으로 화합물 스크리닝 파이프라인 실행
+        python -m auto_hypothesis_agent.pipelines.compound_screen_pipeline --gene KRAS
+        ```
+
+5.  **결과 확인:**
+    스크리닝 결과, 예측된 단백질 구조, 최종 리포트 등은 `outputs/` 디렉터리에서 확인할 수 있습니다.
+    ```bash
+    ls -R outputs/
+    ```
 
 ## 라이선스
 
 이 프로젝트는 [MIT 라이선스](LICENSE)에 따라 배포됩니다.
-
-## 1. 시스템 요구 사항
-* **OS**: Linux / WSL2 Ubuntu 22.04
-* **GPU**: NVIDIA CUDA-호환 (10 GB VRAM 이상 권장)
-* **드라이버 & CUDA**: NVIDIA Driver 535+, CUDA Toolkit 12.x
-* **Conda**: Miniconda3 또는 Anaconda3 (conda >= 23)
-
-## 2. 환경 구축 (Conda)
-```bash
-# 레포 클론 후
-cd Bio-Info
-
-# ① 새 환경 생성
-conda env create -f environment.yml
-
-# ② 활성화
-conda activate bio-info
-
-# ③ 로컬 패키지 editable 설치(이미 environment.yml에 포함되어 있으므로 생략 가능)
-# pip install -e .
-
-# ④ 외부 바이너리 설치 (필요 시)
-# AutoDock Vina
-wget https://github.com/ccsb-scripps/AutoDock-Vina/releases/download/v1.2.5/vina_1.2.5_linux_x86_64 -O vina
-chmod +x vina && sudo mv vina /usr/local/bin/
-
-# GROMACS (GPU) — 상세 명령은 docs/gromacs_install.md 참고
-# AmberTools
-conda install -c conda-forge ambertools -y
-```
-
-## 3. 환경 변수 설정
-`.env` 파일을 프로젝트 루트에 두고 다음과 같이 채워주세요.
-```dotenv
-AUTODOCK_VINA_BIN=/usr/local/bin/vina
-GROMACS_BIN=gmx
-MMGBSA_SCRIPT=MMPBSA.py
-OPENMM_PLATFORM=CUDA
-
-NEO4J_BOLT_URI=bolt://localhost:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=your_password
-```
-
-## 4. 파이프라인 실행 예시
-### 4-1. 가설 + 구조/CRISPR
-```bash
-python run_auto_hypothesis_agent.py --topic "KRAS" --n_hypo 3
-```
-
-### 4-2. Compound 스크리닝 & 비교 리포트
-```bash
-python auto_hypothesis_agent/pipelines/compound_screen_pipeline.py \
-       --gene KRAS \
-       --library_sdf data/libraries/zinc_leads.sdf \
-       --top_k 500 --md_ns 50
-```
-
-리포트는 `outputs/reports/report_KRAS_YYYY-MM-DD.md` 로 저장됩니다.
-
-## 5. Troubleshooting
-* **Conda 설치 중 충돌**: `--no-channel-priority` 옵션 시도.
-* **OpenMM가 GPU를 인식하지 못함**: `OPENMM_PLATFORM=CPU` 로 임시 변경.
-* **GROMACS `libcuda.so` 오류**: NVIDIA 드라이버 버전을 확인하고 재시작.
-
----
-라이선스: MIT  
-문의: Issues 탭 또는 maintainer@example.com 
