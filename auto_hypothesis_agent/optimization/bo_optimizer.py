@@ -71,14 +71,26 @@ class BOOptimizer:
 
         # ---------------- dynamic parameter build ----------------
         genes = self._fetch_genes(hypothesis.text)
-        compounds = self._fetch_compounds(hypothesis.text)
 
         if not genes:
             raise ValueError("No candidate genes found for hypothesis; cannot build search space.")
 
-        if not compounds:
-            # fallback generic inhibitor
-            compounds = ["generic_inhibitor"]
+        # Collect compounds that directly target any of the selected genes
+        compounds_set: set[str] = set()
+        for g in genes:
+            compounds_set.update(self._fetch_compounds_for_gene(g))
+
+        if not compounds_set:
+            raise ValueError("No compounds targeting selected genes; skipping hypothesis")
+
+        compounds = list(compounds_set)
+
+        # ------------------------------------------------------------
+        # Variant choices (if available for the selected genes)
+        # ------------------------------------------------------------
+        variant_choices: List[str] = []
+        if len(genes) == 1:  # variant parameter는 단일 gene 실험일 때만 사용
+            variant_choices = self._fetch_variants_for_gene(genes[0])
 
         search_space = _base_numeric_parameters() + [
             {
@@ -92,6 +104,15 @@ class BOOptimizer:
                 "values": compounds,
             },
         ]
+
+        if variant_choices:
+            search_space.append(
+                {
+                    "name": "variant",
+                    "type": "choice",
+                    "values": variant_choices,
+                }
+            )
 
         try:
             ax_client.create_experiment(
@@ -163,9 +184,13 @@ class BOOptimizer:
             except Exception:
                 symbols = []
 
-        # 4) Apply HGNC whitelist if available
+        # 4) HGNC whitelist + token fallback
         if HGNC_SET:
             symbols = [s for s in symbols if s.upper() in HGNC_SET]
+
+        # 4b) If still empty, intersect processed tokens with HGNC set directly (offline fallback)
+        if not symbols:
+            symbols = [tok for tok in processed if tok in HGNC_SET]
 
         # 5) Relationship-based filtering: ensure gene is linked to at least one compound or disease
         rel_filtered: List[str] = []
@@ -186,14 +211,31 @@ class BOOptimizer:
         return rel_filtered[:10]
 
     # -----------------------------------------------------------------
-    def _fetch_compounds(self, text: str) -> List[str]:
+    def _fetch_compounds_for_gene(self, gene: str) -> List[str]:
+        """Return compounds that have a TARGETS relationship to given gene."""
         cypher = (
-            "MATCH (c:Compound) \n"
-            "WHERE toLower($t) CONTAINS toLower(c.name) \n"
-            "RETURN DISTINCT c.name AS name LIMIT 20"
+            "MATCH (cmp:Compound)-[:TARGETS]->(g:Gene {name:$g})\n"
+            "RETURN DISTINCT cmp.name AS name LIMIT 20"
         )
         try:
-            rows = self.graph.run(cypher, t=text)
+            rows = self.graph.run(cypher, g=gene)
             return [r["name"] for r in rows if r.get("name")]
+        except Exception:
+            pass
+
+        # Fallback: use placeholder compound derived from gene symbol
+        return [f"{gene}_INHIBITOR"]
+
+    # -----------------------------------------------------------------
+    def _fetch_variants_for_gene(self, gene: str) -> List[str]:
+        """Return Variant IDs derived from the specified gene."""
+
+        cypher = (
+            "MATCH (v:Variant)-[:DERIVED_FROM]->(g:Gene {name:$g}) "
+            "RETURN DISTINCT v.id AS vid LIMIT 10"
+        )
+        try:
+            rows = self.graph.run(cypher, g=gene)
+            return [r["vid"] for r in rows if r.get("vid")]
         except Exception:
             return [] 

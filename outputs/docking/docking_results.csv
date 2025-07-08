@@ -1,0 +1,15 @@
+compound_id,docking_score,complex_file
+ibrutinib,-6.78,outputs/docking/KRAS_KRAS_G12C_0_ibrutinib_out.pdbqt
+BI-2852,-6.727,outputs/docking/KRAS_KRAS_G12C_0_BI-2852_out.pdbqt
+sotorasib,-6.492,outputs/docking/KRAS_KRAS_G12C_0_sotorasib_out.pdbqt
+Sotorasib,-5.955,outputs/docking/KRAS_KRAS_G12C_0_Sotorasib_out.pdbqt
+anlotinib,-5.919,outputs/docking/KRAS_KRAS_G12C_0_anlotinib_out.pdbqt
+adagrasib,-5.705,outputs/docking/KRAS_KRAS_G12C_0_adagrasib_out.pdbqt
+Adagrasib,-5.698,outputs/docking/KRAS_KRAS_G12C_0_Adagrasib_out.pdbqt
+MRTX849,-5.693,outputs/docking/KRAS_KRAS_G12C_0_MRTX849_out.pdbqt
+ARS-1620,-5.636,outputs/docking/KRAS_KRAS_G12C_0_ARS-1620_out.pdbqt
+penicillin,-5.517,outputs/docking/KRAS_KRAS_G12C_0_penicillin_out.pdbqt
+Garsorasib,-5.335,outputs/docking/KRAS_KRAS_G12C_0_Garsorasib_out.pdbqt
+omeprazole,-5.26,outputs/docking/KRAS_KRAS_G12C_0_omeprazole_out.pdbqt
+RAD001,-4.684,outputs/docking/KRAS_KRAS_G12C_0_RAD001_out.pdbqt
+aspirin,-3.884,outputs/docking/KRAS_KRAS_G12C_0_aspirin_out.pdbqt

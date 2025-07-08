@@ -30,6 +30,15 @@ ALPHAFOLD_ENDPOINT: str | None = os.getenv("ALPHAFOLD_ENDPOINT")
 OMEGAFOLD_BIN: str | None = os.getenv("OMEGAFOLD_BIN", "omegafold")
 OMEGAFOLD_SUBBATCH_SIZE: int = int(os.getenv("OMEGAFOLD_SUBBATCH_SIZE", "64"))  # 16GB VRAM 기준 권장값
 
+# External tool paths (In Silico Simulation)
+AUTODOCK_VINA_BIN: str | None = os.getenv("AUTODOCK_VINA_BIN", "vina")
+GROMACS_BIN: str | None = os.getenv("GROMACS_BIN", "gmx")
+OPENMM_PLATFORM: str | None = os.getenv("OPENMM_PLATFORM", "CUDA")
+MMGBSA_SCRIPT: str | None = os.getenv("MMGBSA_SCRIPT", "MMPBSA.py")
+
+# Pocket detection
+FPOCKET_BIN: str | None = os.getenv("FPOCKET_BIN", "fpocket")
+
 # Log configuration summary
 print("[auto_hypothesis_agent] Config loaded. Neo4j URI:", NEO4J_BOLT_URI)
 

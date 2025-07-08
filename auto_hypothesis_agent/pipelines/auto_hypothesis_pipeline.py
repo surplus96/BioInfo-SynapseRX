@@ -46,6 +46,34 @@ def run(topic: str, n_hypo: int = 5):
             print("--- Trial", plan.trial_index, plan.parameters)
             print(sop.markdown)
 
+            # --------------------------------------------------------
+            # NEW: Downstream compound screening automatically triggered
+            # --------------------------------------------------------
+            try:
+                from auto_hypothesis_agent.simulation import LigandGenerator
+                from auto_hypothesis_agent.pipelines import compound_screen_pipeline
+
+                # 1) Generate ligand library SDF from KG
+                lg = LigandGenerator()
+                sdf_path = lg.from_kg_targets(
+                    graph_client=graph,
+                    gene=plan.parameters.get("gene", "KRAS"),
+                    out_path="kg_library_auto.sdf",
+                )
+
+                # 2) Determine gene/variant identifier for pipeline
+                tgt_gene = plan.parameters.get("variant") or plan.parameters.get("gene")
+
+                # 3) Run compound screening (top_k reduced for demo)
+                compound_screen_pipeline.run(
+                    gene=tgt_gene,
+                    library_sdf=sdf_path,
+                    top_k=200,
+                    md_ns=25,
+                )
+            except Exception as exc:
+                print("[WARN] Compound screening step failed:", exc)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Auto-Hypothesis Agent CLI (stub)")

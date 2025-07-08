@@ -1,0 +1,4 @@
+gene,compound_id,docking_score,delta_g,sa_score
+KRAS,Sotorasib,-9.8,-52.1,4.3
+KRAS,Adagrasib,-10.1,-55.0,4.5
+KRAS,BI-2852,-8.9,-47.2,3.9 

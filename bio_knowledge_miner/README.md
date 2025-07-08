@@ -1,4 +1,45 @@
-# Bio-Knowledge-Miner
+# `bio_knowledge_miner`
+
+## 개요
+
+`bio_knowledge_miner`는 Bio-Info 프로젝트의 데이터 수집 및 지식 관리 백본(backbone)입니다. 이 모듈의 핵심 목표는 비정형 데이터(예: 과학 논문)와 정형 데이터(예: ChEMBL, PubChem)를 포함한 다양한 소스로부터 생물의학 정보를 추출, 처리하고, 이를 연결하여 거대한 지식 그래프(Knowledge Graph)를 구축하는 것입니다.
+
+이 지식 그래프는 신약 개발 연구에 필요한 핵심적인 관계들(예: '유전자-질병 연관성', '화합물-단백질 상호작용', '치료제-부작용')을 명시적으로 표현하며, `auto_hypothesis_agent`가 가설을 생성하고 검증하는 데 필요한 기반 지식을 제공합니다.
+
+## 주요 기능 및 파이프라인
+
+1.  **데이터 수집 (`data_collection`)**:
+    *   PubMed API 클라이언트를 이용해 특정 키워드(예: 'KRAS G12C inhibitors')와 관련된 논문의 초록 및 메타데이터를 대량으로 수집합니다.
+    *   PDF 파서(`pdf_parser`)를 통해 논문 전체 텍스트를 추출하고, OCR 핸들러(`ocr_handler`)를 이용해 이미지 내 텍스트까지 처리합니다.
+
+2.  **정보 추출 (`llm_services`)**:
+    *   LLM(Large Language Model)을 기반으로 한 엔티티 추출기(`entity_extractor`)가 텍스트에서 'Gene', 'Disease', 'Compound', 'Mutation' 등 미리 정의된 유형의 생물의학 엔티티를 식별하고 정규화합니다.
+    *   추출된 엔티티 간의 관계를 추론하고, 긴 텍스트를 요약하여 지식 그래프의 노드와 엣지에 필요한 정보를 생성합니다.
+
+3.  **지식 그래프 구축 (`knowledge_graph`)**:
+    *   추출된 엔티티와 관계를 사용하여 Neo4j 데이터베이스에 지식 그래프를 구축(`kg_builder`)합니다.
+    *   그래프에 저장된 노드(예: 화합물)의 정보를 외부 데이터베이스와 연동하여 보강합니다(예: `fill_compound_structures`).
+    *   그래프 기반의 RAG(Retrieval-Augmented Generation) 쿼리 엔진(`graph_rag_query`)을 통해 자연어 질문에 대한 답변을 지식 그래프에서 찾아 제공합니다.
+
+4.  **유지보수 (`maintenance`)**:
+    *   그래프 데이터의 일관성과 품질을 유지하기 위한 다양한 스크립트(예: 유전자 이름 정제, 화합물 구조 정보 채우기)를 포함합니다.
+
+## 실행 방법
+
+`bio_knowledge_miner`의 각 기능은 독립적으로 실행될 수 있습니다. 예를 들어, 특정 주제에 대한 논문을 수집하고 지식 그래프를 구축하려면 다음 단계를 따를 수 있습니다.
+
+```bash
+# (Bio-Info 프로젝트 루트에서 실행)
+
+# 1. PubMed에서 'KRAS G12C' 관련 논문 초록 수집
+python -m bio_knowledge_miner.data_collection.collect_pubmed_data --query "KRAS G12C" --max_papers 100
+
+# 2. 수집된 텍스트에서 엔티티 추출 및 지식 그래프에 노드로 추가
+python -m bio_knowledge_miner.llm_services.entity_extractor
+
+# 3. 지식 그래프의 노드 간 관계 추론 및 엣지 추가
+python -m bio_knowledge_miner.knowledge_graph.kg_builder
+```
 
 End-to-end **Literature ➜ Knowledge-Graph** pipeline powered by AI.
 
@@ -20,7 +61,7 @@ End-to-end **Literature ➜ Knowledge-Graph** pipeline powered by AI.
 ## Project Layout
 ```
 /bio-knowledge-miner/
-├── main.py                 # 整個 파이프라인을 실행하는 메인 스크립트
+├── main.py                 # 파이프라인을 실행하는 메인 스크립트
 ├── config.py               # API 키, DB 접속 정보, 파일 경로 등 설정 관리
 ├── requirements.txt        # 프로젝트에 필요한 모든 파이썬 라이브러리 목록
 ├── .env                    # (Git 무시) 실제 API 키와 비밀번호 저장

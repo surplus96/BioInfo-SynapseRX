@@ -1,0 +1,37 @@
+MODEL 1
+REMARK VINA RESULT:    -3.884      0.000      0.000
+REMARK INTER + INTRA:          -4.953
+REMARK INTER:                  -4.566
+REMARK INTRA:                  -0.388
+REMARK UNBOUND:                -0.388
+REMARK  Name = /tmp/tmp3f1o5r4b/aspirin.pdb
+REMARK  3 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C2_2  and  O2_4
+REMARK    2  A    between atoms: O2_4  and  C3_5
+REMARK    3  A    between atoms: C8_10  and  C9_11
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C3  UNL     1      10.637 -10.678   2.464  0.00  0.00    +0.155 A 
+ATOM      2  C4  UNL     1       9.203 -10.242   2.400  0.00  0.00    +0.038 A 
+ATOM      3  C5  UNL     1       8.111 -11.267   2.314  0.00  0.00    +0.003 A 
+ATOM      4  C6  UNL     1       8.452 -12.727   2.291  0.00  0.00    +0.000 A 
+ATOM      5  C7  UNL     1       9.886 -13.163   2.356  0.00  0.00    +0.010 A 
+ATOM      6  C8  UNL     1      10.979 -12.139   2.442  0.00  0.00    +0.114 A 
+ENDROOT
+BRANCH   6   7
+ATOM      7  C9  UNL     1      12.412 -12.574   2.506  0.00  0.00    +0.391 C 
+ATOM      8  O3  UNL     1      13.063 -13.193   1.304  0.00  0.00    -0.240 OA
+ATOM      9  O4  UNL     1      13.196 -12.392   3.772  0.00  0.00    -0.240 OA
+ENDBRANCH   6   7
+BRANCH   1  10
+ATOM     10  O2  UNL     1      11.729  -9.654   2.550  0.00  0.00    -0.424 OA
+BRANCH  10  12
+ATOM     11  C1  UNL     1      11.908  -9.400   5.129  0.00  0.00    +0.122 C 
+ATOM     12  C2  UNL     1      11.845  -8.781   3.764  0.00  0.00    +0.322 C 
+ATOM     13  O1  UNL     1      11.898  -7.290   3.614  0.00  0.00    -0.250 OA
+ENDBRANCH  10  12
+ENDBRANCH   1  10
+TORSDOF 3
+ENDMDL

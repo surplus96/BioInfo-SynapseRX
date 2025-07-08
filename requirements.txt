@@ -1,11 +1,25 @@
-requests
-beautifulsoup4
-# semantic-scholar-api 패키지는 PyPI에 존재하지 않아 삭제
-pubmed-lookup
-PyMuPDF
-pdfplumber
-paddlepaddle-gpu
-paddleocr
+# Core ML & Data Science Libraries
+numpy==1.26
+pandas
+scipy
+scikit-learn
+matplotlib
+seaborn
+
+# Cheminformatics & Bioinformatics
+rdkit
+openmm
+mdanalysis
+biopython
+openmmforcefields
+openff-toolkit
+
+# Deep Learning & OCR
+# Note: These are large libraries. Install them only if you need OCR/vision features.
+# paddlepaddle-gpu
+# paddleocr
+
+# LLM & Frameworks
 langchain
 langchain-openai
 langchain-anthropic
@@ -13,11 +27,26 @@ langchain-google-genai
 openai
 anthropic
 google-generativeai
-python-dotenv
+
+# Database & Utilities
 neo4j
 tqdm
-crossrefapi
+requests
+beautifulsoup4
+pyopenssl
 ax-platform
+pubmed-lookup
+PyMuPDF
+pdfplumber
+python-dotenv
+crossrefapi
 pydantic
-biopython
 
+# Botorch dependencies for Bayesian Optimization
+botorch
+gpytorch
+pyro-ppl
+linear-operator
+
+# Editable install for local development
+-e .

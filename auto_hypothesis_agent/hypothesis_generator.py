@@ -25,9 +25,12 @@ class HypothesisGenerator:
 
     DEFAULT_PROMPT_TMPL = (
         "You are a biomedical research assistant. Based on the following context from a knowledge "
-        "graph, propose {n} novel, specific and testable biological hypotheses related to the topic '{topic}'. "
-        "Use official HGNC gene symbols (e.g., KRAS, EGFR) when referring to genes. "
-        "Each hypothesis should be one sentence long. Return them as a numbered list.\n\n"  # noqa: E501
+        "graph, propose {n} novel, specific and testable biological hypotheses that *target disease-driving "
+        "genomic elements* (for example: oncogenic gene mutations such as KRAS G12C, or viral genomic "
+        "regions such as SARS-CoV-2 ORF1ab) related to the topic '{topic}'. "
+        "When referring to human genes use official HGNC symbols, and prefer HGVS nomenclature for variants. "
+        "Each hypothesis should be a single sentence that explicitly mentions the genomic element being targeted. "
+        "Return the hypotheses as a numbered list.\n\n"  # noqa: E501
         "--- CONTEXT ---\n{context}\n----------------\n"
     )
 

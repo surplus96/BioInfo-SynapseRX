@@ -1,22 +1,52 @@
-<Installation>
+# Bio-Info 프로젝트 실행 가이드 (pip 환경)
 
-sudo apt update
-sudo apt install python3.10 python3.10-venv python3.10-distutils -y
+## 1. 환경 구축
+# WSL bash에서 실행:
+bash setup_pip_env.sh
 
-# 가상환경 생성
-python3.10 -m venv ~/bioinfo310
-source ~/bioinfo310/bin/activate
-python -V   # 3.10.x 확인
+## 2. 환경 활성화 (매번 실행 전)
+source bio-info-pip/bin/activate
 
-# 이후 의존성 설치
-pip install --upgrade pip
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-pip install "git+https://github.com/HeliXonProtein/OmegaFold.git"
-pip install -r requirements.txt
+## 3. Neo4j 데이터베이스 시작
+docker-compose up -d
+
+## 4. 환경변수 설정 (.env 파일 생성)
+cat > .env << EOF
+# OpenAI API
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Neo4j 설정
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=password
+
+# 외부 도구 경로 (선택사항)
+AUTODOCK_VINA_BIN=/usr/local/bin/vina
+GROMACS_BIN=/usr/local/bin/gmx
+OPENMM_PLATFORM=CUDA
+MMGBSA_SCRIPT=/usr/local/bin/MMGBSA.py
+OMEGAFOLD_BIN=/usr/local/bin/omegafold
+EOF
+
+## 5. 파이프라인 실행
+
+# 문헌 데이터 추출
+python run_bio_knowledge_miner.py
+python bio_knowledge_miner/maintenance/clean_gene_nodes.py
+python -m bio_knowledge_miner.maintenance.annotate_variants
+python -m bio_knowledge_miner.maintenance.fill_compound_structures --gene KRAS
+
+# 5-1. 가설 생성 + 구조 예측
+python run_auto_hypothesis_agent.py --topic "KRAS G12C inhibitor" --n_hypo 1
+python -m auto_hypothesis_agent.pipelines.compound_screen_pipeline --gene KRAS
 
 
-<Launch>
 
-1. python run_bio_knowledge_miner.py
-2. python -m bio_knowledge_miner.maintenance.clean_gene_nodes
-3. python run_auto_hypothesis_agent.py --topic "KRAS" --n_hypo 2
+## 6. 결과 확인
+ls outputs/  # PDB 구조 파일들
+ls reports/  # Markdown 리포트들
+
+## 환경 비활성화
+deactivate
+
+# =========================================

@@ -1,0 +1,47 @@
+name: bio-info
+channels:
+  - conda-forge
+  - defaults
+  - bioconda
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.10
+  - numpy=1.26
+  - pytorch=2.1
+  - pytorch-cuda=12.1
+  - rdkit
+  - openmm
+  - mdanalysis
+  - pandas
+  - matplotlib
+  - seaborn
+  - pip
+  - pip:
+      - neo4j
+      - tqdm
+      - requests
+      - beautifulsoup4
+      - pyopenssl
+      - ax-platform
+      - biopython
+      - pubmed-lookup
+      - PyMuPDF
+      - pdfplumber
+      - paddlepaddle-gpu
+      - paddleocr
+      - langchain
+      - langchain-openai
+      - langchain-anthropic
+      - langchain-google-genai
+      - openai
+      - anthropic
+      - google-generativeai
+      - python-dotenv
+      - crossrefapi
+      - pydantic
+      - botorch
+      - gpytorch
+      - pyro-ppl
+      - linear-operator
+      - -e .
