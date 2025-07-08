@@ -32,10 +32,26 @@ Bio-Info/
 
 ## 주요 기능
 
-*   **지식 그래프 구축**: PubMed 등에서 논문을 자동으로 크롤링하고, LLM을 이용해 핵심 엔티티(유전자, 질병, 화합물 등)를 추출하여 Neo4j 지식 그래프로 구축합니다.
-*   **화합물 스크리닝 파이프라인**: 특정 단백질 타겟(예: KRAS G12C)과 지식 그래프에 저장된 화합물 라이브러리를 사용하여, 포켓 탐색 (`fpocket`), 분자 도킹 (`Vina`), 결합 자유 에너지 계산 (`OpenMM`)을 포함한 전체 가상 스크리닝 과정을 자동화합니다.
-*   **ADMET 예측**: 화합물의 흡수, 분포, 대사, 배설, 독성(ADMET) 프로필을 예측하여 초기 단계에서 약물로서의 가능성을 평가합니다.
-*   **결과 보고**: 스크리닝 결과를 CSV 파일로 생성하고, 결합 친화도와 ADMET 점수를 종합하여 유망 후보 물질의 순위를 매깁니다.
+<details>
+<summary><b>1. bio_knowledge_miner</b></summary>
+
+`bio_knowledge_miner`는 Bio-Info 프로젝트의 데이터 수집 및 지식 관리 백본(backbone)입니다. 이 모듈의 핵심 목표는 비정형 데이터(예: 과학 논문)와 정형 데이터(예: ChEMBL, PubChem)를 포함한 다양한 소스로부터 생물의학 정보를 추출, 처리하고, 이를 연결하여 거대한 지식 그래프(Knowledge Graph)를 구축하는 것입니다.
+
+이 지식 그래프는 신약 개발 연구에 필요한 핵심적인 관계들(예: '유전자-질병 연관성', '화합물-단백질 상호작용', '치료제-부작용')을 명시적으로 표현하며, `auto_hypothesis_agent`가 가설을 생성하고 검증하는 데 필요한 기반 지식을 제공합니다.
+
+ [README](https://github.com/surplus96/BioInfo-SynapseRX/tree/main/bio_knowledge_miner#readme)
+
+</details>
+
+<details>
+<summary><b>2. auto_hypothesis_agent</b></summary>
+
+`auto_hyphothesis_agent` 는 지식 그래프와 외부 데이터를 기반으로 가설을 설정하고, 전산 시뮬레이션을 통해 이를 검증하는 자동화 에이전트입니다. 이 프로젝트의 핵심인 화합물 가상 스크리닝 파이프라인이 이 모듈에 포함되어 있습니다.
+
+ [README](https://github.com/surplus96/BioInfo-SynapseRX/blob/main/auto_hypothesis_agent/README.md)
+
+</details>
+
 
 ## 시작하기
 
@@ -56,8 +72,8 @@ Bio-Info/
 
 1.  **프로젝트 클론:**
     ```bash
-    git clone https://github.com/your-username/Bio-Info.git
-    cd Bio-Info
+    git clone https://github.com/your-username/BioInfo-SynapseRX.git
+    cd BioInfo-SynapseRX
     ```
 
 2.  **설치 스크립트 실행:**
