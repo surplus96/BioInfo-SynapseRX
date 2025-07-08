@@ -145,9 +145,8 @@ Execution flow:
 MATCH (c:Compound)-[:TARGETS]->(g:Gene)-[:ASSOCIATED_WITH]->(d:Disease)
 RETURN c,g,d
 
-// KRAS-related diseases
-MATCH (g:Gene {name:'KRAS'})-[:ASSOCIATED_WITH]->(d:Disease)
-RETURN d;
+MATCH (c:Compound)-[:TARGETS]->(g:Gene {name:"KRAS"})
+RETURN c.name, c.pubchem_cid, c.smiles, c.inchi_key
 ```
 
 
