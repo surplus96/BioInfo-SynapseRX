@@ -105,18 +105,19 @@ Bio-Info/
     프로젝트 루트 디렉터리에 `.env` 파일을 생성하고 아래 내용을 채워넣으세요.
     ```bash
     cat > .env << EOF
-# OpenAI API
-OPENAI_API_KEY=your_openai_api_key_here
 
-# Neo4j 설정
-NEO4J_URI=bolt://localhost:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=password
+    OPENAI_API_KEY=your_openai_api_key_here
 
-# 외부 도구 경로 (선택사항, setup_pip_env.sh가 자동 설정 시도)
-AUTODOCK_VINA_BIN=/usr/local/bin/vina
-OMEGAFOLD_BIN=/usr/local/bin/omegafold
-EOF
+
+    NEO4J_URI=bolt://localhost:7687
+    NEO4J_USER=neo4j
+    NEO4J_PASSWORD=password
+
+
+    AUTODOCK_VINA_BIN=/usr/local/bin/vina
+    OMEGAFOLD_BIN=/usr/local/bin/omegafold
+    EOF
+    
     ```
 
 4.  **전체 파이프라인 실행:**
