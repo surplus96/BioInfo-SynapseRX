@@ -151,11 +151,10 @@ RETURN d;
 ```
 
 ```
-![image](https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-01.png)
+<img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-01.png"> 
 
 
-![image](https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-02.png)
-
+<img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-02.png"> 
 
 ---
 ## License
