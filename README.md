@@ -75,7 +75,7 @@ BioInfo-SynapseRX/
 
 1.  **프로젝트 클론:**
     ```bash
-    git clone https://github.com/your-username/BioInfo-SynapseRX.git
+    git clone https://github.com/surplus96/BioInfo-SynapseRX.git
     cd BioInfo-SynapseRX
     ```
 
