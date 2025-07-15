@@ -59,18 +59,6 @@ BioInfo-SynapseRX/
 
 </details>
 
-## 🌊 워크플로우
-
-```mermaid
-graph TD
-    A[📄 생물의학 문헌] --> B(🔎 Bio Knowledge Miner);
-    B -- 1. 정보 추출 & 관계 정립 --> C{📊 Neo4j 지식 그래프};
-    C -- 2. 타겟 기반 후보물질 추천 --> D(🤖 Auto Hypothesis Agent);
-    F[🎯 타겟 단백질 PDB] --> E;
-    D -- 3. 화합물-단백질 전달 --> E(🧬 In-Silico 스크리닝 파이프라인);
-    E -- 4. 도킹 & ADMET 예측 --> G[📈 최종 분석 리포트];
-```
-
 ## 🛠️ 기술 스택
 
 -   **Backend**: Python 3.10
