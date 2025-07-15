@@ -104,11 +104,11 @@ RETURN c.name as Compound, c.pubchem_id as PubChemID;
 ---
 
 <p align="center">
-  <img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/result/Neo4j_screenshot_01.png" width="550"/>
+  <img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/result/Neo4j_screenshot_01.png" width="820"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/result/Neo4j_screenshot_02.png" width="550"/>
+  <img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/result/Neo4j_screenshot_02.png" width="820"/>
 </p>
 
 
