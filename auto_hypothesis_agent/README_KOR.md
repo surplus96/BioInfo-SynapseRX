@@ -42,11 +42,21 @@
 **목표:** `bio_knowledge_miner`가 구축한 지식 그래프를 입력으로 받아,  
 LLM + Bayesian Optimization을 사용해 **새로운 생물학 가설을 생성**하고 **실험 설계**를 자동으로 제안합니다.
 
-> 핵심 키워드: OMegaFold, CRISPick-v3
+> 핵심 키워드: Gemini 2.5 Flash-Lite, Ax 0.4, AlphaFold 3, Protocol-GPT, CRISPick-v3
 
 ---
+## 🏗️ 아키텍처 개요
 
-# 기능
+```mermaid
+graph TD;
+    K((Knowledge Graph)) -->|Graph Query| HG[Hypothesis Generator]
+    HG --> BO[Bayesian Optimizer]
+    BO --> ED[Experiment Designer]
+    ED --> PG[Protocol Generator]
+    PG --> P{Outputs}
+    P -->|Markdown/JSON-LD| LabDocs[📄 SOP]
+    P -->|Metadata| KGUpdate[KG Feedback]
+```
 
 1. **Hypothesis Generator (`hypothesis_generator.py`)**  
    • 지식 그래프를 질의해 관련 노드·관계를 추출 →  
@@ -113,8 +123,15 @@ ALPHAFOLD_ENDPOINT = "https://api.af3.example.com/predict"
 ```
 3. 파이프라인 사용 예
 ```bash
-python -m auto_hypothesis_agent.pipelines.auto_hypothesis_pipeline --topic "KRAS G12C inhibitor" --n_hypo 1
+python -m auto_hypothesis_agent.pipelines.auto_hypothesis_pipeline --topic "KRAS G12C inhibitor" --n_hypo 5
 ```
 
+---
+## ⌛ 향후 로드맵
+- [ ] 멀티-objective BO (정보 이득 + 비용)
+- [ ] Wet-lab 로봇 통제 API 연동
+- [ ] Streamlit UI로 Hypothesis Dashboard 제공
+
+---
 ## 📝 라이선스
 MIT 
