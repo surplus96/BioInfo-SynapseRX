@@ -32,7 +32,7 @@ BioInfo-SynapseRX/
 └── README.md                  # 프로젝트 최상위 README
 ```
 
-## 🌟 주요 기능
+## 주요 기능
 
 -   **자동화된 지식 그래프 구축**: PubMed 등에서 논문을 크롤링하고, NLP 모델을 통해 유전자, 질병, 화합물 등의 관계를 추출하여 Neo4j 데이터베이스에 지식 그래프를 자동으로 구축합니다.
 -   **AI 기반 후보물질 추천**: 특정 유전자(Target)를 지정하면, 지식 그래프 내의 관계 정보를 바탕으로 가장 유망한 화합물 후보군을 지능적으로 추천합니다.
@@ -59,7 +59,8 @@ BioInfo-SynapseRX/
 
 </details>
 
-## 🛠️ 기술 스택
+
+## 기술 스택
 
 -   **Backend**: Python 3.10
 -   **Database**: Neo4j (그래프 데이터베이스)
@@ -68,7 +69,8 @@ BioInfo-SynapseRX/
 -   **Data Handling**: Pandas, NumPy
 -   **Infrastructure**: Docker, Conda
 
-## ⚙️ 설치 방법
+
+## 설치 방법
 
 1.  **프로젝트 클론**
     ```bash
@@ -110,7 +112,8 @@ BioInfo-SynapseRX/
     ```
     > `-e` 옵션은 패키지를 "편집 가능(editable)" 모드로 설치하여, 소스 코드를 수정하면 즉시 반영되도록 합니다.
 
-## 🚀 실행 가이드
+
+## 실행 가이드
 
 모든 스크립트는 프로젝트 루트 디렉터리에서 실행해야 합니다.
 
@@ -146,10 +149,13 @@ python -m bio_knowledge_miner.maintenance.annotate_variants
     ```
     > 이 스크립트는 내부적으로 Neo4j에서 `KRAS` 유전자 관련 화합물을 조회하고, 각 화합물을 `5V90`, `6N2J`, `7YCE` 단백질 구조와 도킹 시뮬레이션을 수행한 후, ADMET 예측을 거쳐 최종 리포트를 생성합니다.
 
-## 📊 결과 확인
+
+
+## 결과 확인
 
 -   **시뮬레이션 결과 파일**: `outputs/` 디렉터리에 다운로드된 PDB 파일, 도킹 결과(PDBQT) 등이 저장됩니다.
 -   **최종 분석 리포트**: `outputs/reports/` 디렉터리에 각 타겟 PDB ID별로 Markdown 형식의 상세 리포트가 생성됩니다. (예: `report_5V90_2025-07-15.md`)
+
 
 ## 예시 결과 해설
 
