@@ -25,7 +25,11 @@ pip install numpy==1.26.4
 
 # 6. PyTorch CUDA 12.1 설치
 echo "🔥 PyTorch CUDA 12.1 설치 중..."
-pip install torch==2.2.0+cu121 torchvision==0.17.0+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
+pip install torch==2.2.0 torchvision --extra-index-url https://download.pytorch.org/whl/cu121
+
+# 6.5 PyTorch Geometric 설치 (사전 컴파일된 wheel 사용)
+echo "🧩 PyTorch Geometric (PyG) 설치 중..."
+pip install torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.2.0+cu121.html
 
 # 7. 기본 과학 패키지들 설치
 echo "📊 기본 과학 패키지들 설치 중..."
@@ -75,7 +79,17 @@ else
     echo "✅ fpocket already installed: $(which fpocket)"
 fi
 
-# 14. 설치 확인
+# 14. Ollama 설치 (로컬 LLM 구동을 위해 권장)
+echo "🤖 Ollama 설치 중 (없으면 설치)..."
+if ! command -v ollama &> /dev/null; then
+    echo "📥 Ollama 설치 스크립트 실행..."
+    curl -fsSL https://ollama.com/install.sh | sh
+    echo "✅ Ollama 설치 완료. 변경 사항을 적용하려면 터미널을 다시 시작해야 할 수 있습니다."
+else
+    echo "✅ Ollama already installed: $(which ollama)"
+fi
+
+# 15. 설치 확인
 echo "✅ 설치 확인 중..."
 python --version
 python -c "import torch; print(f'✅ PyTorch {torch.__version__} (CUDA: {torch.cuda.is_available()})')"
@@ -83,7 +97,16 @@ python -c "import numpy; print(f'✅ NumPy {numpy.__version__}')"
 python -c "import pandas; print(f'✅ Pandas {pandas.__version__}')"
 python -c "import omegafold; print('✅ OmegaFold 설치 완료')"
 python -c "import auto_hypothesis_agent; print('✅ 로컬 패키지 설치 완료')"
+if command -v ollama &> /dev/null; then
+    echo "✅ Ollama 설치 확인됨."
+    echo "🧠 기본 LLM 모델(llama3:8b) 다운로드를 시도합니다..."
+    ollama pull llama3:8b
+else
+    echo "⚠️ Ollama가 설치되었지만, 'ollama' 명령어를 사용하려면 터미널 재시작이 필요할 수 있습니다."
+    echo "   터미널 재시작 후 'ollama pull llama3:8b'를 실행하여 기본 모델을 다운로드하세요."
+fi
 
 echo "🎉 Python 3.10 pip 환경 구축 완료!"
 echo "🚀 환경 활성화: source bio-info-pip/bin/activate"
 echo "🧬 OmegaFold 사용법: omegafold input.fasta output_dir"
+echo "🤖 로컬 LLM 사용법 (터미널 재시작 후): ollama list"

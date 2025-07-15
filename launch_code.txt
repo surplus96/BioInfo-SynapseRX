@@ -33,18 +33,29 @@ EOF
 # 문헌 데이터 추출
 python run_bio_knowledge_miner.py
 python bio_knowledge_miner/maintenance/clean_gene_nodes.py
+python -m bio_knowledge_miner.maintenance.populate_cell_lines
+python -m bio_knowledge_miner.maintenance.filter_cell_lines --gene KRAS --mutation G12C
+python -m bio_knowledge_miner.maintenance.update_graph_from_filtered_cells --gene KRAS
 python -m bio_knowledge_miner.maintenance.annotate_variants
 python -m bio_knowledge_miner.maintenance.fill_compound_structures --gene KRAS
 
 # 5-1. 가설 생성 + 구조 예측
-python run_auto_hypothesis_agent.py --topic "KRAS G12C inhibitor" --n_hypo 1
-python -m auto_hypothesis_agent.pipelines.compound_screen_pipeline --gene KRAS
-
+python find_pdb_ids.py --query "KRAS G12C"   # KRAS 관련 단백질 구조 중에서, 해상도(Resolution)가 높고 가장 적합한 PDB ID를 찾아서 결정
+python run_drug_discovery.py --target_pdb_ids 5V90 6N2J 7YCE 7MDP --gene KRAS
 
 
 ## 6. 결과 확인
 ls outputs/  # PDB 구조 파일들
 ls reports/  # Markdown 리포트들
+
+# Neo4j Cypher 코드 예시
+MATCH (g:Gene {name: 'KRAS'})-[r]-(m)
+RETURN g, r, m
+LIMIT 25
+
+MATCH (g:Gene {name: 'KRAS'})-[r]-(m)
+RETURN g.name AS Gene, type(r) AS Relationship, labels(m) AS ConnectedNodeType, m.name AS ConnectedNodeName
+LIMIT 100
 
 ## 환경 비활성화
 deactivate

@@ -1,0 +1,35 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    25:
+HEADER 0  - Pocket Score                      : 0.0100
+HEADER 1  - Drug Score                        : 0.0007
+HEADER 2  - Number of alpha spheres           :    15
+HEADER 3  - Mean alpha-sphere radius          : 3.9470
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6699
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : 35.2500
+HEADER 7  - Polarity Score                    :     4
+HEADER 8  - Amino Acid based volume Score     : 6.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 153.9199
+HEADER 10 - Pocket volume (convex hull)       : 2.2358
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 6.0000
+HEADER 13 - Number of apolar alpha sphere     :     7
+HEADER 14 - Proportion of apolar alpha sphere : 0.4667
+ATOM    322  NH2 ARG A  41       5.822  42.222  30.675  0.00  0.00           N 0
+ATOM    399   CZ TYR H  52       0.075  44.734  27.557  0.00  0.00           C 0
+ATOM    234  CZ2 TRP H  34       2.568  43.373  22.263  0.00  0.00           C 0
+ATOM    231  NE1 TRP H  34       1.601  41.352  23.389  0.56  9.84           N 0
+ATOM    396  CD2 TYR H  52       0.250  46.427  25.869  0.00  0.00           C 0
+ATOM    395  CD1 TYR H  52      -0.415  44.210  25.271  0.00  0.00           C 0
+ATOM    394   CG TYR H  52      -0.148  45.524  24.885  0.00  0.00           C 0
+ATOM    400   OH TYR H  52       0.181  44.351  28.883  0.89  2.14           O 0
+ATOM    765   OG SER H  98       1.515  39.899  29.185  0.48  8.57           O 0
+ATOM    318   CD ARG A  41       3.129  42.789  31.284  0.00  0.00           C 0
+ATOM    398  CE2 TYR H  52       0.356  46.042  27.192  0.00  0.00           C 0
+ATOM    397  CE1 TYR H  52      -0.315  43.815  26.599  0.00  0.00           C 0
+ATOM    319   NE ARG A  41       3.746  41.465  31.310  0.00  0.00           N 0
+TER
+END

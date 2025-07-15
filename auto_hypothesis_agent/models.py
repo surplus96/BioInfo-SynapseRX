@@ -1,7 +1,28 @@
 from __future__ import annotations
-
+from pathlib import Path
 from pydantic import BaseModel
-from typing import Dict, Any
+from typing import Dict, Any, List
+
+# --- Data models for Compound Screening Pipeline ---
+
+class DockingInput(BaseModel):
+    """Data model for a single docking job input."""
+    pdb_file: Path
+    smiles: str
+    ligand_name: str
+
+class DockingResult(BaseModel):
+    """Data model for a single docking job result."""
+    ligand_name: str
+    pdbqt_file: Path
+    affinity: float # Binding affinity in kcal/mol
+    
+class ScreeningResult(BaseModel):
+    """Final result for a single screened compound."""
+    ligand_name: str
+    smiles: str
+    docking_result: DockingResult
+    admet_properties: Dict[str, Any]
 
 
 class ExperimentPlan(BaseModel):

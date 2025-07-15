@@ -1,0 +1,39 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    14:
+HEADER 0  - Pocket Score                      : 0.0807
+HEADER 1  - Drug Score                        : 0.0000
+HEADER 2  - Number of alpha spheres           :    18
+HEADER 3  - Mean alpha-sphere radius          : 3.8369
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6013
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : 12.3333
+HEADER 7  - Polarity Score                    :     4
+HEADER 8  - Amino Acid based volume Score     : 3.3333
+HEADER 9  - Pocket volume (Monte Carlo)       : 240.8916
+HEADER 10 - Pocket volume (convex hull)       : 6.7499
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM    510   CB ALA A  66      -5.393  19.301  34.748  0.00  0.00           C 0
+ATOM    518   CE MET A  67      -4.148  23.891  30.220  0.00  0.00           C 0
+ATOM    545  OE1 GLN A  70      -2.237  22.513  32.418  0.00  0.00           O 0
+ATOM    404    O ARG I  54      -3.647  20.980  27.368  0.31  5.36           O 0
+ATOM    415    O PRO I  55      -6.747  20.770  26.564  0.00  0.00           O 0
+ATOM    410  NH1 ARG I  54      -3.684  14.942  27.468  0.00  0.00           N 0
+ATOM    408   NE ARG I  54      -4.074  16.117  25.533  0.00  0.00           N 0
+ATOM    432    O VAL I  58      -6.978  16.581  25.249  0.35  5.36           O 0
+ATOM    405   CB ARG I  54      -3.465  18.785  25.315  0.00  0.00           C 0
+ATOM    420   CA SER I  56      -8.670  21.873  28.212  0.00  0.00           C 0
+ATOM    414    C PRO I  55      -6.641  21.956  26.879  0.00  0.00           C 0
+ATOM    419    N SER I  56      -7.536  22.589  27.637  0.00  0.00           N 0
+ATOM    424   OG SER I  56      -8.826  22.795  30.442  0.82  2.14           O 0
+ATOM    425    N GLY I  57      -9.938  20.072  27.205  0.00  0.00           N 0
+ATOM    511    N MET A  67      -6.034  22.402  34.188  0.00  0.00           N 0
+ATOM    505   OG SER A  65      -9.029  22.153  34.608  0.00  0.00           O 0
+ATOM    515   CB MET A  67      -6.599  24.081  32.486  0.00  0.00           C 0
+TER
+END

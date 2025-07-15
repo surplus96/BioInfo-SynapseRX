@@ -1,0 +1,34 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     9:
+HEADER 0  - Pocket Score                      : 0.1455
+HEADER 1  - Drug Score                        : 0.0000
+HEADER 2  - Number of alpha spheres           :    18
+HEADER 3  - Mean alpha-sphere radius          : 3.8675
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.3631
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : -2.1250
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 2.6250
+HEADER 9  - Pocket volume (Monte Carlo)       : 240.0097
+HEADER 10 - Pocket volume (convex hull)       : 10.8121
+HEADER 11 - Charge Score                      :     2
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM      6   OG SER I   2      -1.001  29.609   3.755  0.00  0.00           O 0
+ATOM    325    N GLY H  44      -7.040  29.494   3.485  0.00  0.00           N 0
+ATOM      1    O HOH H 439      -5.182  33.048   3.154  0.49  3.21           O 0
+ATOM      3   C2 CAD I 303      -7.313  22.748   1.926  0.00  0.00          C2 0
+ATOM     49   CB PRO I   8      -3.968  20.674   0.319  0.00  0.00           C 0
+ATOM    324   NZ LYS H  43      -5.682  28.469  -2.170  0.00  0.00           N 0
+ATOM    323   CE LYS H  43      -6.446  29.406  -1.294  0.00  0.00           C 0
+ATOM    764   CA GLY I 100      -2.114  26.495   4.399  0.00  0.00           C 0
+ATOM    766    O GLY I 100      -4.410  25.870   4.431  0.00  0.00           O 0
+ATOM      2   C1 CAD I 303      -8.007  25.609   3.211  0.00  0.00          C1 0
+ATOM    315    O GLY H  42     -10.224  27.006   0.957  0.67  6.43           O 0
+ATOM    322   CD LYS H  43      -7.953  29.145  -1.248  0.00  0.00           C 0
+TER
+END

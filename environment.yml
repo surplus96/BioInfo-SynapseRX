@@ -7,12 +7,14 @@ channels:
   - nvidia
 dependencies:
   - python=3.10
+  - libstdcxx-ng # SciPy/PaddleOCR 실행 시 GLIBCXX 버전 충돌 문제를 해결하기 위해 추가
   - numpy=1.26
   - pytorch=2.1
   - pytorch-cuda=12.1
   - rdkit
   - openmm
   - mdanalysis
+  - openbabel # 화합물 스크리닝 시 분자 구조 준비(PDBQT 변환)에 필수
   - pandas
   - matplotlib
   - seaborn
@@ -44,4 +46,5 @@ dependencies:
       - gpytorch
       - pyro-ppl
       - linear-operator
+      - tabulate
       - -e .

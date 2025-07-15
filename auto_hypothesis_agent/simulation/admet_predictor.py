@@ -180,15 +180,27 @@ class ADMETPredictor:
     # Batch helper
     # ----------------------------------------------
 
-    def batch_predict(self, df: pd.DataFrame, smiles_column: str = "smiles") -> pd.DataFrame:
-        """SMILES가 포함된 데이터프레임을 사용하여 ADMET 속성을 일괄 예측합니다."""
-        if smiles_column not in df.columns:
-            raise ValueError(f"SMILES column '{smiles_column}' not found in DataFrame.")
+    def predict_from_df(self, df: pd.DataFrame, smiles_col: str, name_col: str) -> pd.DataFrame:
+        """
+        Predicts ADMET properties for each compound in the input DataFrame.
+        Assumes the DataFrame contains columns for SMILES and a unique compound identifier.
 
-        results = df[smiles_column].apply(self.predict)
+        Args:
+            df: Input DataFrame containing compound data.
+            smiles_col: The name of the column with the SMILES strings.
+            name_col: The name of the column with the unique compound identifier.
+
+        Returns:
+            A new DataFrame with the identifier and the predicted ADMET properties.
+        """
+        if smiles_col not in df.columns:
+            raise ValueError(f"SMILES column '{smiles_col}' not found in DataFrame.")
+        if name_col not in df.columns:
+            raise ValueError(f"Identifier column '{name_col}' not found in DataFrame.")
+
+        results = df.apply(lambda row: self.predict(row[smiles_col]), axis=1)
         admet_df = pd.json_normalize(results)
 
-        # 원래 데이터프레임의 다른 열들과 예측 결과를 결합합니다.
-        # 인덱스를 기반으로 안전하게 병합합니다.
-        original_cols = df.drop(columns=[smiles_column], errors='ignore')
-        return pd.concat([original_cols.reset_index(drop=True), admet_df], axis=1) 
+        # Combine the identifier column with the new ADMET data
+        final_df = pd.concat([df[[name_col]].reset_index(drop=True), admet_df], axis=1)
+        return final_df 

@@ -27,7 +27,8 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
-from auto_hypothesis_agent.config import AUTODOCK_VINA_BIN, FPOCKET_BIN
+from auto_hypothesis_agent.core_config import AUTODOCK_VINA_BIN, FPOCKET_BIN, DOCKING_OUTPUT_PATH
+from ..models import DockingInput, DockingResult
 
 _RNG = random.Random(42)
 
@@ -173,6 +174,28 @@ class DockingRunner:
 # -----------------------------------------------------------------------------
 
 
+def prepare_receptor(pdb_path: Path) -> Path | None:
+    """
+    Prepares a PDB file for docking by converting it to PDBQT format.
+    Requires Open Babel (obabel) to be installed.
+    """
+    pdbqt_path = pdb_path.with_suffix(".pdbqt")
+    
+    if not _binary_exists("obabel"):
+        print("[DockingRunner] 'obabel' is not installed. Cannot prepare receptor PDBQT.")
+        return None
+
+    try:
+        # Use obabel to convert PDB to PDBQT, adding polar hydrogens and charges
+        cmd = ["obabel", str(pdb_path), "-O", str(pdbqt_path), "-xr"]
+        subprocess.run(cmd, check=True, capture_output=True)
+        print(f"[DockingRunner] Receptor prepared and saved to {pdbqt_path}")
+        return pdbqt_path
+    except subprocess.CalledProcessError as e:
+        print(f"[DockingRunner] Failed to prepare receptor {pdb_path}: {e.stderr.decode()}")
+        return None
+
+
 def _binary_exists(cmd_name: str | None) -> bool:
     if cmd_name is None:
         return False
@@ -229,16 +252,18 @@ def _calc_grid_from_receptor(receptor_pdbqt: Path) -> Tuple[Tuple[float, float, 
     with receptor_pdbqt.open() as f:
         for line in f:
             if line.startswith("ATOM") or line.startswith("HETATM"):
-                xs.append(float(line[30:38]))
-                ys.append(float(line[38:46]))
-                zs.append(float(line[46:54]))
+                try:
+                    xs.append(float(line[30:38]))
+                    ys.append(float(line[38:46]))
+                    zs.append(float(line[46:54]))
+                except (ValueError, IndexError):
+                    continue
+
+    if not xs or not ys or not zs:
+        raise ValueError(f"Could not extract any atom coordinates from receptor file: {receptor_pdbqt}")
 
     center = (sum(xs) / len(xs), sum(ys) / len(ys), sum(zs) / len(zs))
-    size = (
-        max(xs) - min(xs) + 8,
-        max(ys) - min(ys) + 8,
-        max(zs) - min(zs) + 8,
-    )
+    size = (max(xs) - min(xs), max(ys) - min(ys), max(zs) - min(zs))
     return center, size
 
 

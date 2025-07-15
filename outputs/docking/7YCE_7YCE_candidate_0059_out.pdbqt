@@ -1,0 +1,19 @@
+MODEL 1
+REMARK VINA RESULT:    -1.964      0.000      0.000
+REMARK INTER + INTRA:          -1.964
+REMARK INTER:                  -1.964
+REMARK INTRA:                   0.000
+REMARK UNBOUND:                 0.000
+REMARK  Name = /tmp/tmpm2oui3k9/7YCE_candidate_0059.pdb
+REMARK  0 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C1  UNL     1     -18.433  -0.852 -16.530  0.00  0.00    +0.106 C 
+ATOM      2  S1  UNL     1     -17.011  -1.664 -17.308  0.00  0.00    +0.044 S 
+ATOM      3  O1  UNL     1     -15.799  -0.847 -16.976  0.00  0.00    -0.256 OA
+ATOM      4  C2  UNL     1     -17.046  -3.061 -16.153  0.00  0.00    +0.106 C 
+ENDROOT
+TORSDOF 0
+ENDMDL

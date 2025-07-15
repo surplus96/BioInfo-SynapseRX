@@ -1,0 +1,35 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     5:
+HEADER 0  - Pocket Score                      : 0.0597
+HEADER 1  - Drug Score                        : 0.0000
+HEADER 2  - Number of alpha spheres           :    18
+HEADER 3  - Mean alpha-sphere radius          : 3.8671
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6896
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : 1.1667
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 3.8333
+HEADER 9  - Pocket volume (Monte Carlo)       : 177.9977
+HEADER 10 - Pocket volume (convex hull)       : 4.9429
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM      1    O HOH A 341     -27.858   9.750 -41.489  0.00  0.00           O 0
+ATOM   1308   NZ LYS A 165     -27.620   9.787 -38.759  0.29  2.19           N 0
+ATOM   1086    O GLY A 138     -23.929   5.521 -37.751  0.00  0.00           O 0
+ATOM   1090    O ILE A 139     -19.711   7.084 -38.429  0.00  0.00           O 0
+ATOM   1085    C GLY A 138     -22.875   4.873 -37.860  0.00  0.00           C 0
+ATOM   1087    N ILE A 139     -21.686   5.409 -37.569  0.00  0.00           N 0
+ATOM   1089    C ILE A 139     -20.578   7.601 -37.725  0.00  0.00           C 0
+ATOM   1095    N PRO A 140     -20.619   8.947 -37.582  0.00  0.00           N 0
+ATOM   1100   CG PRO A 140     -21.676  11.016 -37.664  0.00  0.00           C 0
+ATOM   1280  OE2 GLU A 162     -25.711  11.780 -37.652  0.29  4.29           O 0
+ATOM   1096   CA PRO A 140     -19.633   9.807 -38.252  0.00  0.00           C 0
+ATOM   1101   CD PRO A 140     -21.662   9.717 -36.884  0.00  0.00           C 0
+ATOM   1279  OE1 GLU A 162     -25.698  10.061 -36.289  0.50  1.07           O 0
+TER
+END

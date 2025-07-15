@@ -53,7 +53,7 @@ def step_3_extract_entities():
 
     for item in extracted_pdf_data_cache:
         content = item["content"]
-        summary = summarize_text(content, max_tokens=500)
+        summary = summarize_text(content)
         entities = llm_extract_entities(content)
         # 저장
         item["summary"] = summary

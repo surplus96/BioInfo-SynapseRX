@@ -1,0 +1,40 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    22:
+HEADER 0  - Pocket Score                      : 0.0207
+HEADER 1  - Drug Score                        : 0.0007
+HEADER 2  - Number of alpha spheres           :    21
+HEADER 3  - Mean alpha-sphere radius          : 3.8308
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5108
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : 7.2000
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 3.8000
+HEADER 9  - Pocket volume (Monte Carlo)       : 272.6430
+HEADER 10 - Pocket volume (convex hull)       : 14.3605
+HEADER 11 - Charge Score                      :     2
+HEADER 12 - Local hydrophobic density Score   : 1.0000
+HEADER 13 - Number of apolar alpha sphere     :     2
+HEADER 14 - Proportion of apolar alpha sphere : 0.0952
+ATOM      1    O HOH I 431     -51.694  31.157  -2.287  0.37  7.50           O 0
+ATOM   1663   CB SER H 215     -55.837  28.275  -1.090  0.00  0.00           C 0
+ATOM   1661    C SER H 215     -55.394  25.973  -1.984  0.00  0.00           C 0
+ATOM   1659    N SER H 215     -53.757  27.099  -0.489  0.00  0.00           N 0
+ATOM   1655   CG LYS H 214     -50.329  26.787  -1.857  0.00  0.00           C 0
+ATOM    912    O PRO I 121     -45.280  28.119  -6.502  0.60  6.43           O 0
+ATOM    907   CG PRO I 120     -44.852  23.954  -5.488  0.00  0.00           C 0
+ATOM    906   CB PRO I 120     -44.387  24.186  -6.864  0.00  0.00           C 0
+ATOM   1403  CZ2 TRP I 186     -45.802  24.433 -10.460  0.00  0.00           C 0
+ATOM   1656   CD LYS H 214     -49.615  26.043  -2.983  0.00  0.00           C 0
+ATOM    926   CB SER I 123     -49.457  32.182  -5.193  0.00  0.00           C 0
+ATOM    927   OG SER I 123     -49.442  31.807  -3.831  0.58  1.07           O 0
+ATOM   1658   NZ LYS H 214     -48.481  23.847  -3.470  0.00  0.00           N 0
+ATOM   1577    C PRO I 209     -50.510  23.108 -10.346  0.00  0.00           C 0
+ATOM   1573    O ALA I 208     -47.874  21.729  -9.236  0.58  5.36           O 0
+ATOM    922    N SER I 123     -47.148  31.343  -5.042  0.32  1.09           N 0
+ATOM    952  CD1 LEU I 126     -47.284  30.411  -9.599  0.00  0.00           C 0
+ATOM    923   CA SER I 123     -48.041  32.249  -5.760  0.00  0.00           C 0
+TER
+END

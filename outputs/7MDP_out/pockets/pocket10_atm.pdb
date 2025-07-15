@@ -1,0 +1,43 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    10:
+HEADER 0  - Pocket Score                      : 0.1129
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    30
+HEADER 3  - Mean alpha-sphere radius          : 3.8443
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4793
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : 11.3333
+HEADER 7  - Polarity Score                    :     4
+HEADER 8  - Amino Acid based volume Score     : 3.8889
+HEADER 9  - Pocket volume (Monte Carlo)       : 234.5625
+HEADER 10 - Pocket volume (convex hull)       : 8.6327
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM   1286  OE1 GLU A 162       7.143  36.940  53.477  0.45  6.43           O 0
+ATOM   1310    O LYS A 165      13.186  34.003  50.813  0.29  6.43           O 0
+ATOM   1311   CB LYS A 165      12.058  36.721  51.595  0.00  0.00           C 0
+ATOM    866  OD1 ASP A 108       7.889  29.532  54.154  0.00  8.57           O 0
+ATOM    867  OD2 ASP A 108       8.958  29.389  52.230  0.31  6.43           O 0
+ATOM    885    O MET A 111       2.160  36.440  52.295  0.61  1.07           O 0
+ATOM   1100  CG2 ILE A 139       1.735  33.334  55.180  0.00  0.00           C 0
+ATOM   1093    O GLY A 138       4.797  33.688  57.080  0.57  7.50           O 0
+ATOM   1314   CE LYS A 165      11.306  37.964  54.225  0.00  0.00           C 0
+ATOM    876   CA PRO A 110       4.603  33.459  49.535  0.00  0.00           C 0
+ATOM    871    O VAL A 109       3.538  31.359  50.926  0.68  4.29           O 0
+ATOM    870    C VAL A 109       4.195  31.087  49.909  0.00  0.00           C 0
+ATOM   1282    O GLU A 162       8.632  35.771  49.476  0.54  5.36           O 0
+ATOM   1309    C LYS A 165      12.556  34.780  50.086  0.00  0.00           C 0
+ATOM    880   CG PRO A 110       6.436  33.159  48.026  0.00  0.00           C 0
+ATOM    875    N PRO A 110       4.743  32.042  49.155  0.00  0.00           N 0
+ATOM    882    N MET A 111       2.635  34.333  50.637  0.00  0.00           N 0
+ATOM   1316    N HIS A 166      11.737  34.352  49.125  0.00  0.00           N 0
+ATOM   1317   CA HIS A 166      11.641  32.935  48.801  0.00  0.00           C 0
+ATOM   1323  CD2 HIS A 166       9.240  30.329  48.773  0.00  0.00           C 0
+ATOM   1320   CB HIS A 166      10.290  32.626  48.145  0.00  0.00           C 0
+TER
+END

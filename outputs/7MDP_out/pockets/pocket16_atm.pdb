@@ -1,0 +1,37 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    16:
+HEADER 0  - Pocket Score                      : 0.0615
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    21
+HEADER 3  - Mean alpha-sphere radius          : 3.9327
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5484
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : 4.7143
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 3.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 262.7354
+HEADER 10 - Pocket volume (convex hull)       : 6.7705
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM      1    O HOH I 417     -32.162  29.168 -11.357  0.77  2.14           O 0
+ATOM   1208  OE2 GLU I 161     -27.122  30.573 -12.662  0.69  6.43           O 0
+ATOM   1350   CB SER I 180     -34.787  30.564 -13.085  0.00  0.00           C 0
+ATOM   1351   OG SER I 180     -34.193  30.747 -11.820  0.45  4.29           O 0
+ATOM   1190   CA GLY I 159     -32.177  27.740 -16.032  0.00  0.00           C 0
+ATOM   1193    N VAL I 160     -30.851  26.105 -14.800  0.00  0.00           N 0
+ATOM   1196    O VAL I 160     -28.207  26.066 -13.681  0.00  0.00           O 0
+ATOM   1189    N GLY I 159     -31.550  27.210 -17.223  0.24  7.66           N 0
+ATOM   1192    O GLY I 159     -32.327  27.396 -13.690  0.00  0.00           O 0
+ATOM   1205   CG GLU I 161     -28.470  29.054 -11.409  0.00  0.00           C 0
+ATOM   1337  OE1 GLN H 171     -31.028  33.101  -8.887  0.41  3.21           O 0
+ATOM   1344   OG SER H 172     -26.602  33.065 -14.817  0.00  0.00           O 0
+ATOM   1335   CG GLN H 171     -28.751  32.434  -9.272  0.00  0.00           C 0
+ATOM   1334   CB GLN H 171     -27.681  33.293  -9.928  0.00  0.00           C 0
+ATOM   1191    C GLY I 159     -31.782  27.053 -14.748  0.00  0.00           C 0
+TER
+END

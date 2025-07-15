@@ -1,0 +1,40 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     7:
+HEADER 0  - Pocket Score                      : -0.0569
+HEADER 1  - Drug Score                        : 0.0312
+HEADER 2  - Number of alpha spheres           :    19
+HEADER 3  - Mean alpha-sphere radius          : 3.8186
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5332
+HEADER 5  - Mean B-factor of pocket residues  : 0.0000
+HEADER 6  - Hydrophobicity Score              : 22.2222
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 4.2222
+HEADER 9  - Pocket volume (Monte Carlo)       : 218.5770
+HEADER 10 - Pocket volume (convex hull)       : 8.5407
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 12.0000
+HEADER 13 - Number of apolar alpha sphere     :    13
+HEADER 14 - Proportion of apolar alpha sphere : 0.6842
+ATOM    296  CG2 VAL C 191     -23.152   6.340  -4.954  0.00  0.00           C 0
+ATOM     15  CD2 LEU C 158     -22.567   6.382  -9.724  0.00  0.00           C 0
+ATOM    285    O SER C 190     -26.941   4.311  -4.442  0.00  0.00           O 0
+ATOM     30  CG2 VAL C 160     -27.720  11.417  -8.440  0.00  0.00           C 0
+ATOM    286   CB SER C 190     -27.932   6.188  -2.529  0.00  0.00           C 0
+ATOM     24    N VAL C 160     -25.804  11.793 -10.711  0.00  0.00           N 0
+ATOM     23   CD PRO C 159     -25.751   8.848 -13.054  0.00  0.00           C 0
+ATOM    331  OE1 GLN C 195     -23.158   2.395 -10.387  0.88  3.21           O 0
+ATOM    298    N LYS C 192     -24.081   1.855  -5.691  0.58  2.19           N 0
+ATOM    303   CG LYS C 192     -25.321  -0.006  -7.702  0.00  0.00           C 0
+ATOM    291   CA VAL C 191     -24.177   4.059  -4.676  0.00  0.00           C 0
+ATOM    295  CG1 VAL C 191     -22.090   4.368  -6.066  0.00  0.00           C 0
+ATOM    260  OD1 ASN C 187     -27.161  11.822  -3.602  0.54  7.50           O 0
+ATOM    257    O ASN C 187     -24.783   8.135  -2.282  0.61  1.07           O 0
+ATOM     28   CB VAL C 160     -26.285  11.894  -8.298  0.00  0.00           C 0
+ATOM      9   CA LEU C 158     -23.015   8.472 -11.975  0.00  0.00           C 0
+ATOM     38  CD1 TYR C 161     -22.343  10.398  -7.347  0.00  0.00           C 0
+ATOM     12   CB LEU C 158     -21.935   8.535 -10.897  0.00  0.00           C 0
+TER
+END

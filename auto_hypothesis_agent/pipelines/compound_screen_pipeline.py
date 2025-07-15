@@ -1,202 +1,145 @@
-"""Compound screening & evaluation pipeline (스켈레톤)."""
+"""Compound screening & evaluation pipeline."""
 
 from __future__ import annotations
-import argparse
-import glob
+
 import logging
-import os
-import subprocess
-from pathlib import Path
-from typing import List
-
 import pandas as pd
-from rdkit import Chem
+from typing import List
+from pathlib import Path
+import tempfile
+import os
 
-from auto_hypothesis_agent import config
-from auto_hypothesis_agent.kg_interface import GraphClient
+from auto_hypothesis_agent.simulation.docking import DockingRunner, prepare_receptor
 from auto_hypothesis_agent.simulation.admet_predictor import ADMETPredictor
-from auto_hypothesis_agent.simulation.binding_energy import BindingEnergyCalculator
-from auto_hypothesis_agent.simulation.docking import DockingRunner
+from auto_hypothesis_agent.reports.reporter import Reporter
+from auto_hypothesis_agent.core_config import DOCKING_OUTPUT_PATH
+from rdkit import Chem
+from rdkit.Chem import AllChem
 
 
-def _get_grid_from_pocket(pocket_pdb_file: str) -> tuple[tuple[float, float, float], tuple[float, float, float]]:
-    """Reads a pocket PDB file from fpocket and calculates the grid box for docking."""
-    coords = []
-    try:
-        with open(pocket_pdb_file) as f:
-            for line in f:
-                if line.startswith("ATOM") or line.startswith("HETATM"):
-                    try:
-                        x = float(line[30:38].strip())
-                        y = float(line[38:46].strip())
-                        z = float(line[46:54].strip())
-                        coords.append((x, y, z))
-                    except (ValueError, IndexError):
-                        logging.warning(f"Could not parse coordinates from line in {pocket_pdb_file}: {line.strip()}")
-                        continue
-    except OSError as e:
-        raise IOError(f"Could not read pocket file {pocket_pdb_file}") from e
+def run_screening_pipeline(
+    target_pdb_path: Path,
+    candidates_df: pd.DataFrame,
+    n_workers: int = -1,
+):
+    """
+    Runs the full compound screening pipeline for a given target and a DataFrame of candidates.
+    This function now acts as a high-level coordinator.
+    """
+    target_pdb_id = target_pdb_path.stem
+    logging.info(f"Starting compound screening pipeline for target: {target_pdb_id}")
 
-    if not coords:
-        raise ValueError(f"No pocket atoms (ATOM/HETATM) found in {pocket_pdb_file}")
+    # Create a temporary compound_id for this specific run, to avoid clashes if the same compound
+    # is docked against multiple targets.
+    candidates_df['run_compound_id'] = [f"{target_pdb_id}_candidate_{i+1:04d}" for i in range(len(candidates_df))]
 
-    min_x = min(c[0] for c in coords)
-    max_x = max(c[0] for c in coords)
-    min_y = min(c[1] for c in coords)
-    max_y = max(c[1] for c in coords)
-    min_z = min(c[2] for c in coords)
-    max_z = max(c[2] for c in coords)
+    # 1. Prepare receptor PDB -> PDBQT
+    receptor_pdbqt_path = prepare_receptor(target_pdb_path)
+    if not receptor_pdbqt_path:
+        logging.error(f"Failed to prepare receptor for {target_pdb_id}. Aborting.")
+        return
 
-    center_x = (max_x + min_x) / 2
-    center_y = (max_y + min_y) / 2
-    center_z = (max_z + min_z) / 2
-
-    # Add 8A margin
-    size_x = (max_x - min_x) + 8
-    size_y = (max_y - min_y) + 8
-    size_z = (max_z - min_z) + 8
-
-    logging.info(f"Calculated grid from pocket: center=({center_x:.2f}, {center_y:.2f}, {center_z:.2f}), size=({size_x:.2f}, {size_y:.2f}, {size_z:.2f})")
-    return (center_x, center_y, center_z), (size_x, size_y, size_z)
-
-
-def run_compound_screen(target_protein: str, target_variant: str, library_sdf: str | None, top_k: int) -> pd.DataFrame:
-    """Runs the full compound screening pipeline."""
-    logging.info(f"Starting compound screen for {target_protein} ({target_variant})")
+    # 2. Prepare ligands in a temporary SDF file for the DockingRunner
+    # DockingRunner's current implementation expects an SDF file.
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".sdf", delete=False) as tmp_sdf:
+        writer = Chem.SDWriter(tmp_sdf.name)
+        for _, row in candidates_df.iterrows():
+            mol = Chem.MolFromSmiles(row['smiles'])
+            if mol:
+                mol.SetProp("_Name", row['run_compound_id'])
+                AllChem.EmbedMolecule(mol)
+                AllChem.MMFFOptimizeMolecule(mol)
+                writer.write(mol)
+        writer.close()
+        ligand_sdf_path = tmp_sdf.name
     
-    temp_sdf_path = None
-    try:
-        # 1. Find receptor PDB and pocket files
-        receptor_glob_pattern = f"outputs/{target_variant}*.pdb"
-        receptor_pdb_files = glob.glob(receptor_glob_pattern)
-        if not receptor_pdb_files:
-            raise FileNotFoundError(f"Receptor PDB not found for variant {target_variant} in outputs/")
+    logging.info(f"Prepared {len(candidates_df)} ligands in temporary SDF file: {ligand_sdf_path}")
 
-        receptor_pdb = receptor_pdb_files[0]
-        logging.info(f"Found receptor PDB: {receptor_pdb}")
+    # 3. Instantiate and run the docking process
+    # The runner will handle pocket detection and receptor preparation internally.
+    runner = DockingRunner(pocket_mode="fpocket")  # Use fpocket to find the pocket
+    docking_results_df = runner.run(
+        receptor_pdbqt=str(receptor_pdbqt_path),
+        library_sdf=ligand_sdf_path,
+        out_dir=DOCKING_OUTPUT_PATH
+    )
 
-        receptor_stem = Path(receptor_pdb).stem
-        pocket_glob_pattern = f"outputs/{receptor_stem}_out/pockets/*_atm.pdb"
-        pocket_files = glob.glob(pocket_glob_pattern)
-        if not pocket_files:
-            logging.info(f"Pocket PDB file not found in derived path: {os.path.dirname(pocket_glob_pattern)}")
+    # Clean up the temporary SDF file
+    os.remove(ligand_sdf_path)
 
-        pocket_file = pocket_files[0]
-        logging.info(f"Found pocket file: {pocket_file}")
+    if docking_results_df.empty:
+        logging.error("Docking process failed to produce results. Aborting pipeline.")
+        return
 
-        # 2. 화합물 라이브러리 가져오기 및 ADMET 예측
-        # --------------------------------------------------------------------------
-        if library_sdf:
-            logging.info(f"Loading compounds from provided SDF: {library_sdf}")
-            # SDF에서 화합물 ID와 SMILES 로드
-            mols = [m for m in Chem.SDMolSupplier(library_sdf) if m]
-            compounds_data = [{
-                "ligand_id": m.GetProp("_Name") if m.HasProp("_Name") else f"lig_{i}",
-                "smiles": Chem.MolToSmiles(m)
-            } for i, m in enumerate(mols)]
-            compounds_df = pd.DataFrame(compounds_data)
-            
-        else:
-            logging.info("SDF library not provided. Fetching compounds from Knowledge Graph.")
-            client = GraphClient(config.NEO4J_BOLT_URI, config.NEO4J_USER, config.NEO4J_PASSWORD)
-            cypher = (
-                "MATCH (c:Compound)-[:TARGETS]->(g:Gene) "
-                "WHERE g.name STARTS WITH $gene_name AND c.name IS NOT NULL AND c.smiles IS NOT NULL "
-                "RETURN c.name AS ligand_id, c.smiles AS smiles"
-            )
-            results = client.run(cypher, gene_name=target_protein)
-            client.close()
+    # The docking result has 'compound_id', which is our temporary 'run_compound_id'.
+    # Rename it to merge with the original candidates_df.
+    docking_results_df.rename(columns={'compound_id': 'run_compound_id'}, inplace=True)
+    merged_df = pd.merge(docking_results_df, candidates_df, on="run_compound_id")
 
-            if not results:
-                logging.error(f"No compounds found for target {target_protein} in Knowledge Graph.")
-                return pd.DataFrame()
-            
-            compounds_df = pd.DataFrame(results)
+    # 4. Predict ADMET properties
+    admet_predictor = ADMETPredictor()
+    admet_results_df = admet_predictor.predict_from_df(merged_df, smiles_col='smiles', name_col='run_compound_id')
 
-            # 임시 SDF 생성
-            os.makedirs("outputs/docking", exist_ok=True)
-            temp_sdf_path = f"outputs/docking/temp_kg_library_{target_protein}.sdf"
-            with Chem.SDWriter(temp_sdf_path) as writer:
-                for _, row in compounds_df.iterrows():
-                    mol = Chem.MolFromSmiles(row["smiles"])
-                    if mol:
-                        mol.SetProp("_Name", str(row["ligand_id"]))
-                        writer.write(mol)
-            library_sdf = temp_sdf_path
+    # 5. Merge results
+    # ADMET results also use 'run_compound_id' as 'compound_id'. Rename for merging.
+    admet_results_df.rename(columns={'compound_id': 'run_compound_id'}, inplace=True)
+    final_df = pd.merge(merged_df, admet_results_df, on="run_compound_id", how="left")
+    
+    # Add the 'set' column to identify these as candidate results
+    final_df['set'] = 'candidate'
+    
+    # Calculate composite score for ranking.
+    # Lower docking_score is better, and lower SA_score is better.
+    # We convert them to Z-scores and invert them so that a higher composite score is better.
+    if 'docking_score' in final_df.columns and 'Synthetic Accessibility' in final_df.columns:
+        # Fill NaN values that might cause issues with Z-score calculation
+        final_df['docking_score'].fillna(final_df['docking_score'].mean(), inplace=True)
+        final_df['Synthetic Accessibility'].fillna(final_df['Synthetic Accessibility'].mean(), inplace=True)
 
-        logging.info(f"Predicting ADMET properties for {len(compounds_df)} compounds.")
-        admet_predictor = ADMETPredictor()
-        admet_df = admet_predictor.batch_predict(df=compounds_df.copy(), smiles_column="smiles")
+        final_df['docking_z'] = (final_df['docking_score'] - final_df['docking_score'].mean()) / final_df['docking_score'].std()
+        final_df['sa_z'] = (final_df['Synthetic Accessibility'] - final_df['Synthetic Accessibility'].mean()) / final_df['Synthetic Accessibility'].std()
+        
+        # The reporter expects a higher composite score to be better.
+        final_df['composite'] = (final_df['docking_z'] * -1 + final_df['sa_z'] * -1) / 2
+        logging.info("Calculated composite score from docking score and synthetic accessibility.")
+    elif 'docking_score' in final_df.columns:
+        # Fallback to using only docking score if SA is not available
+        final_df['docking_score'].fillna(final_df['docking_score'].mean(), inplace=True)
+        final_df['composite'] = final_df['docking_score'] * -1
+        logging.warning("Using inverted 'docking_score' as a fallback composite score.")
+    else:
+        # If no scores are available, create a dummy composite score to avoid crashing.
+        final_df['composite'] = 0.0
+        logging.error("Could not find any scores to calculate a composite score.")
 
-        # 3. 도킹 실행
-        # --------------------------------------------------------------------------
-        receptor_pdbqt_path = Path(receptor_pdb).with_suffix(".pdbqt").as_posix()
-        if not Path(receptor_pdbqt_path).exists():
-            logging.info(f"Receptor PDBQT file not found. Generating from {receptor_pdb}...")
-            cmd = [
-                "obabel", "-ipdb", receptor_pdb, "-opdbqt", "-O",
-                receptor_pdbqt_path, "--partialcharge", "gasteiger", "-xr",
-            ]
-            subprocess.run(cmd, check=True)
-
-        center, size = _get_grid_from_pocket(pocket_file)
-        docking_runner = DockingRunner(grid_center=center, grid_size=size)
-        docking_results_df = docking_runner.run(
-            receptor_pdbqt=receptor_pdbqt_path,
-            library_sdf=library_sdf,
-            top_k=top_k
+    # 6. Generate final report
+    if final_df is not None and not final_df.empty:
+        logging.info("Generating final report...")
+        reporter = Reporter() # Use default output directory
+        report_path = reporter.render(
+            gene=target_pdb_id, # Use PDB ID as a stand-in for gene name
+            comparison_df=final_df
         )
-
-        if docking_results_df.empty:
-            logging.warning("Docking returned no results. Aborting.")
-            return pd.DataFrame()
-        
-        # 열 이름 통일: 'compound_id' -> 'ligand_id'
-        if "compound_id" in docking_results_df.columns:
-            docking_results_df = docking_results_df.rename(columns={"compound_id": "ligand_id"})
-        
-        # 4. 결과 병합 및 결합 에너지 계산
-        # --------------------------------------------------------------------------
-        # 도킹 결과와 ADMET 예측 병합
-        results_df = pd.merge(docking_results_df, admet_df, on="ligand_id", how="left")
-
-        dg_calculator = BindingEnergyCalculator()
-        logging.info(f"Calculating binding energy for {len(results_df)} docked complexes.")
-        energy_df = dg_calculator.batch(df=results_df)
-
-        # 최종 결과 병합
-        final_results_df = pd.merge(results_df, energy_df, on="ligand_id", how="left")
-
-        # 7. 최종 결과 저장
-        report_dir = "outputs/reports"
-        os.makedirs(report_dir, exist_ok=True)
-        report_path = os.path.join(report_dir, f"screening_report_{target_variant}_{pd.Timestamp.now():%Y%m%d%H%M%S}.csv")
-        final_results_df = final_results_df.sort_values(by="docking_score", ascending=True)
-        
-        # 불필요한 열 제거
-        final_results_df = final_results_df.drop(columns=['complex_file'], errors='ignore')
-        
-        final_results_df.to_csv(report_path, index=False)
-        logging.info(f"Screening report saved to {report_path}")
-
-        return final_results_df
-
-    except Exception as e:
-        logging.error(f"Compound screening pipeline failed: {e}", exc_info=True)
-        return pd.DataFrame()
-    finally:
-        # Clean up temporary SDF file if created
-        if temp_sdf_path and os.path.exists(temp_sdf_path):
-            os.remove(temp_sdf_path)
-            logging.info(f"Removed temporary SDF file: {temp_sdf_path}")
+        logging.info(f"Screening report saved to: {report_path}")
+        return report_path
+    else:
+        logging.warning("No results to report, skipping report generation.")
+        return None
 
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, format='[%(asctime)s - %(levelname)s] %(message)s')
 
-    run_compound_screen(
-        target_protein="KRAS",
-        target_variant="KRAS_KRAS_G12C",
-        library_sdf=None,
-        top_k=50,
+    # Example usage (replace with actual arguments)
+    target_pdb_path = Path("outputs/docking/4AKE.pdb") # Example PDB path
+    candidate_smiles = [
+        "CCO", "CC(=O)O", "C1=CC=C(C=C1)C(=O)O", "C1=CC=C(C=C1)C(=O)O",
+        "C1=CC=C(C=C1)C(=O)O", "C1=CC=C(C=C1)C(=O)O", "C1=CC=C(C=C1)C(=O)O",
+        "C1=CC=C(C=C1)C(=O)O", "C1=CC=C(C=C1)C(=O)O", "C1=CC=C(C=C1)C(=O)O"
+    ] # Example SMILES list
+
+    run_screening_pipeline(
+        target_pdb_path=target_pdb_path,
+        candidate_smiles=candidate_smiles,
+        n_workers=1, # Example number of workers
     )

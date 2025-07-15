@@ -11,10 +11,19 @@ rdkit
 openmm
 mdanalysis
 biopython
-openmmforcefields
-openff-toolkit
+# openmmforcefields
+# openff-toolkit
 
-# Deep Learning & OCR
+# Deep Learning (PyTorch, PyG, OCR)
+# ----------------------------------
+# PyTorch and core components
+# Note: PyTorch and PyG are installed via setup_pip_env.sh for stability.
+torch
+torchvision
+torchaudio
+torch_geometric
+
+# OCR/Vision (Optional)
 # Note: These are large libraries. Install them only if you need OCR/vision features.
 # paddlepaddle-gpu
 # paddleocr
@@ -27,6 +36,8 @@ langchain-google-genai
 openai
 anthropic
 google-generativeai
+ollama
+transformers
 
 # Database & Utilities
 neo4j
@@ -41,6 +52,7 @@ pdfplumber
 python-dotenv
 crossrefapi
 pydantic
+tabulate
 
 # Botorch dependencies for Bayesian Optimization
 botorch

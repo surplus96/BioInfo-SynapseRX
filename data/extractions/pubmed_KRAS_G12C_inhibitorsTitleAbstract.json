@@ -1,5 +1,55 @@
 [
     {
+        "pmid": "40640254",
+        "title": "Binding modes of the KRAS(G12C) inhibitors GDC-6036 and LY3537982 revealed by all atom molecular dynamics simulations.",
+        "abstract": "Over 100 co-crystal structures of KRAS switch-II pocket (SII-P) targeting inhibitors are currently available in the RCSB Protein Data Bank. These publicly available structures are invaluable tools that have led to a more in-depth understanding of KRAS SII-P pocket, which is crucial for targeted drug design efforts. The binding modes (co-crystal structures) of two KRAS(G12C) inhibitors that have advanced to the clinical trials, GDC-6036 (divarasib) and LY3537982 (olomorasib), are currently unavailable. Here, we reveal the putative binding modes of these two G12C inhibitors by utilizing the available structural data of analogous compounds and molecular dynamics (MD) simulations (total simulation time of 200 micros). Our biochemical assays confirm high affinity of both inhibitors for KRAS(G12C), with differential susceptibility to typical resistance associated co-mutations. A co-mutation at Tyr96 reduces the affinity of both inhibitors, whereas a mutation at His95 negatively impacts only GDC-6036. While both inhibitors display low activity towards KRAS(WT), LY3537982 maintains high activity against other RAS isoforms with G12C mutation. As the simulation predictions align with the experimental results, our findings indicate that microsecond timescale simulations can be a valuable tool for predicting binding modes.",
+        "authors": [
+            "Renne Leini",
+            "Jonas Kapp",
+            "Kari Kopra",
+            "Tatu Pantsar"
+        ],
+        "journal": "Scientific reports",
+        "doi": "10.1038/s41598-025-07532-2",
+        "local_pdf": "data/pdfs/40640254.pdf"
+    },
+    {
+        "pmid": "40634198",
+        "title": "KRAS ctDNA Detection in Patients With Resectable Lung Adenocarcinoma.",
+        "abstract": "Clinical trials are assessing the suitability of KRAS",
+        "authors": [
+            "Meghan L De Meo",
+            "Joseph Seitlinger",
+            "Roni F Rayes",
+            "Lyndon C Walsh",
+            "Muhammad H Shahzad",
+            "Thupten Tsering",
+            "Ramy Saleh",
+            "Nicole Ezer",
+            "Benjamin Shieh",
+            "Annick Wong",
+            "Scott Owen",
+            "Logan Walsh",
+            "Pierre-Olivier Fiset",
+            "Julia V Burnier",
+            "Jonathan D Spicer"
+        ],
+        "journal": "Clinical lung cancer",
+        "doi": "10.1016/j.cllc.2025.05.006"
+    },
+    {
+        "pmid": "40623477",
+        "title": "Comparative genomic landscape of acquired resistance in pancreatic cancer treated with pan-RAS or KRAS",
+        "abstract": "No Abstract",
+        "authors": [
+            "Florian Castet",
+            "Tian V Tian",
+            "Teresa Macarulla"
+        ],
+        "journal": "Annals of oncology : official journal of the European Society for Medical Oncology",
+        "doi": "10.1016/j.annonc.2025.06.018"
+    },
+    {
         "pmid": "40554983",
         "title": "Recent advance of KRAS-G12C inhibitors for cancer therapy.",
         "abstract": "The RAS gene family encodes key oncoproteins that play a central role in cellular signal transduction and tumorigenesis. KRAS exhibits the highest mutation frequency in human cancers, accounting for approximately 80 % of RAS-driven malignancies, with the glycine-to-cysteine substitution at codon 12 (G12C) being one of the most prevalent oncogenic variants. RAS proteins regulate downstream signaling pathways by modulating transcription and translation processes, while at the cellular level, they promote malignant phenotypes such as uncontrolled proliferation and metastasis, making them critical therapeutic targets. In 2021, the FDA approved AMG510 (Sotorasib), the first covalent inhibitor targeting the KRAS-G12C mutation. Nevertheless, emerging resistance mechanisms necessitate continuous medicinal chemistry innovations. Currently, many highly KRAS-G12C inhibitors have been approved or are undergoing various clinical stages. This review provides an overview of contemporary medicinal chemistry approaches in KRAS-G12C inhibitor development. The collective insights from this analysis, combined with existing literature, provide valuable frameworks for designing novel KRAS-G12C targeted therapeutics.",
@@ -313,46 +363,5 @@
         ],
         "journal": "Pharmacological research",
         "doi": "10.1016/j.phrs.2025.107722"
-    },
-    {
-        "pmid": "40174369",
-        "title": "Drugging the Undruggable and beyond: Emerging precision oncology approaches to target acquired resistance to KRAS G12C and KRAS G12D inhibitors.",
-        "abstract": "Development of mutant specific KRAS inhibitors validated KRAS as a 'druggable' target. However, excellent initial efficacy was eventually overshadowed by failure to exhibit sustained clinical response, primarily due to acquired resistance. Some targeted therapies like SOS1, SHP2, and MEK inhibitors, in combination with mutant KRAS G12C inhibitors (G12Ci), are currently under clinical investigation with evidences of improving efficacy. However, a deep understanding of the underlying molecular pathways behind the acquired resistance is still at a nascent stage. Recent preclinical studies have uncovered a role of novel proteins and pathways responsible for resistance and their inhibition demonstrated a robust anticancer efficacy in combination. Plethora of combination therapy approaches are now being proposed with emergence of AXL, ULK1, Tissue factor, farnesyltransferase, etc. as targets to counter G12Ci resistance. This review summarizes in a comprehensive manner, some of the novel combination modalities to overcome G12Ci resistance, based on current understanding and with great potential to hit clinical success. Along with G12C, KRAS G12D (G12D) was also considered a formidable foe, until the discovery of selective inhibitors. However, eventual clinical resistance can eclipse the early success and requires an in-depth understanding of resistance mechanisms. Evidences of G12Ci resistance can be exploited as probable combination strategies to tackle ensuing resistance to G12D inhibitors (G12Di), and can translate in superior clinical efficacy. Early preclinical studies of G12Di in combination with ERBB, SOS1, AKT and immune-checkpoints inhibitors indicate encouraging response. This review further describes some of the early affirmations on combination strategies with G12Di. We postulate to go beyond 'Drugging the Undruggable' with advanced combination approaches mitigating G12C and G12D inhibitor resistance.",
-        "authors": [
-            "Ramesh Kale",
-            "Charudatt Samant",
-            "Krishnadas Nandakumar",
-            "K Sreedhara Ranganath Pai",
-            "Mandar Bhonde"
-        ],
-        "journal": "Biochemical and biophysical research communications",
-        "doi": "10.1016/j.bbrc.2025.151688"
-    },
-    {
-        "pmid": "40172157",
-        "title": "Advances in the treatment of KRAS",
-        "abstract": "Kirsten rat sarcoma (KRAS) is one of the most frequently mutated oncogenic drivers in metastatic non-small cell lung cancer (NSCLC). The development of selective, covalent KRAS G12C (KRAS",
-        "authors": [
-            "Khvaramze Shaverdashvili",
-            "Timothy F Burns"
-        ],
-        "journal": "Cancer",
-        "doi": "10.1002/cncr.35783",
-        "local_pdf": "data/pdfs/40172157.pdf"
-    },
-    {
-        "pmid": "40160736",
-        "title": "Correction to \"Combining Fundamental Kinetics and Standard Alkylation Assays to Prioritize Lead-like KRAS G12C Inhibitors\".",
-        "abstract": "[This corrects the article DOI: 10.1021/acsomega.4c08774.].",
-        "authors": [
-            "Alexandra Frommlet",
-            "Lan K Nguyen",
-            "Matt Saabye",
-            "Nicholas F Endres",
-            "Melinda M Mulvihill",
-            "John G Quinn"
-        ],
-        "journal": "ACS omega",
-        "doi": "10.1021/acsomega.5c01467"
     }
 ]
