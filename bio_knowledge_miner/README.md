@@ -93,13 +93,13 @@ python -m bio_knowledge_miner.maintenance.annotate_variants
 Once the graph is built, you can query it directly in the Neo4j Browser.
 
 ```cypher
-// Find diseases associated with the KRAS gene
-MATCH (g:Gene {name:'KRAS'})-[:ASSOCIATED_WITH]->(d:Disease)
-RETURN d.name as Disease;
+MATCH (g:Gene)-[:TARGETS]-(c:Compound)
+WHERE g.name = 'KRAS' AND c.smiles IS NOT NULL
+RETURN g.name AS Gene, c.name AS CompoundName, c.smiles AS SMILES
 
-// Find compounds that target KRAS
-MATCH (c:Compound)-[:TARGETS]->(g:Gene {name: 'KRAS'})
-RETURN c.name as Compound, c.pubchem_id as PubChemID;
+MATCH (kras:Gene {name: 'KRAS'})-[r]-(other)
+RETURN kras, r, other
+LIMIT 100
 ```
 ---
 
@@ -108,7 +108,7 @@ RETURN c.name as Compound, c.pubchem_id as PubChemID;
 </p>
 
 <p align="center">
-  <img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/result/Neo4j_screenshot_02.png" width="820"/>
+  <img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/result/Neo4j_screenshot_02.png" width="820s"/>
 </p>
 
 
