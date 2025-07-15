@@ -1,43 +1,43 @@
 # `bio_knowledge_miner`
 
-## 개요
+## Overview
 
-`bio_knowledge_miner`는 Bio-Info 프로젝트의 데이터 수집 및 지식 관리 백본(backbone)입니다. 이 모듈의 핵심 목표는 비정형 데이터(예: 과학 논문)와 정형 데이터(예: ChEMBL, PubChem)를 포함한 다양한 소스로부터 생물의학 정보를 추출, 처리하고, 이를 연결하여 거대한 지식 그래프(Knowledge Graph)를 구축하는 것입니다.
+`bio_knowledge_miner` is the data collection and knowledge management backbone of the Bio-Info project. The core goal of this module is to extract, process, and connect biomedical information from various sources, including unstructured data (e.g., scientific papers) and structured data (e.g., ChEMBL, PubChem), to build a massive Knowledge Graph.
 
-이 지식 그래프는 신약 개발 연구에 필요한 핵심적인 관계들(예: '유전자-질병 연관성', '화합물-단백질 상호작용', '치료제-부작용')을 명시적으로 표현하며, `auto_hypothesis_agent`가 가설을 생성하고 검증하는 데 필요한 기반 지식을 제공합니다.
+This knowledge graph explicitly represents key relationships necessary for drug discovery research (e.g., 'gene-disease association', 'compound-protein interaction', 'drug-side effect') and provides the foundational knowledge needed for the `auto_hypothesis_agent` to generate and validate hypotheses.
 
-## 주요 기능 및 파이프라인
+## Key Features and Pipeline
 
-1.  **데이터 수집 (`data_collection`)**:
-    *   PubMed API 클라이언트를 이용해 특정 키워드(예: 'KRAS G12C inhibitors')와 관련된 논문의 초록 및 메타데이터를 대량으로 수집합니다.
-    *   PDF 파서(`pdf_parser`)를 통해 논문 전체 텍스트를 추출하고, OCR 핸들러(`ocr_handler`)를 이용해 이미지 내 텍스트까지 처리합니다.
+1.  **Data Collection (`data_collection`)**:
+    *   Uses a PubMed API client to bulk-collect abstracts and metadata of papers related to specific keywords (e.g., 'KRAS G12C inhibitors').
+    *   Extracts the full text of papers through a PDF parser (`pdf_parser`) and processes text within images using an OCR handler (`ocr_handler`).
 
-2.  **정보 추출 (`llm_services`)**:
-    *   LLM(Large Language Model)을 기반으로 한 엔티티 추출기(`entity_extractor`)가 텍스트에서 'Gene', 'Disease', 'Compound', 'Mutation' 등 미리 정의된 유형의 생물의학 엔티티를 식별하고 정규화합니다.
-    *   추출된 엔티티 간의 관계를 추론하고, 긴 텍스트를 요약하여 지식 그래프의 노드와 엣지에 필요한 정보를 생성합니다.
+2.  **Information Extraction (`llm_services`)**:
+    *   An entity extractor (`entity_extractor`) based on a Large Language Model (LLM) identifies and normalizes predefined types of biomedical entities from the text, such as 'Gene', 'Disease', 'Compound', and 'Mutation'.
+    *   Infers relationships between extracted entities and summarizes long texts to generate the necessary information for the nodes and edges of the knowledge graph.
 
-3.  **지식 그래프 구축 (`knowledge_graph`)**:
-    *   추출된 엔티티와 관계를 사용하여 Neo4j 데이터베이스에 지식 그래프를 구축(`kg_builder`)합니다.
-    *   그래프에 저장된 노드(예: 화합물)의 정보를 외부 데이터베이스와 연동하여 보강합니다(예: `fill_compound_structures`).
-    *   그래프 기반의 RAG(Retrieval-Augmented Generation) 쿼리 엔진(`graph_rag_query`)을 통해 자연어 질문에 대한 답변을 지식 그래프에서 찾아 제공합니다.
+3.  **Knowledge Graph Construction (`knowledge_graph`)**:
+    *   Builds a knowledge graph in a Neo4j database using the extracted entities and relationships (`kg_builder`).
+    *   Enriches the information of nodes stored in the graph (e.g., compounds) by linking to external databases (e.g., `fill_compound_structures`).
+    *   Provides answers to natural language questions from the knowledge graph through a graph-based Retrieval-Augmented Generation (RAG) query engine (`graph_rag_query`).
 
-4.  **유지보수 (`maintenance`)**:
-    *   그래프 데이터의 일관성과 품질을 유지하기 위한 다양한 스크립트(예: 유전자 이름 정제, 화합물 구조 정보 채우기)를 포함합니다.
+4.  **Maintenance (`maintenance`)**:
+    *   Includes various scripts to maintain the consistency and quality of the graph data (e.g., cleaning gene names, filling in compound structure information).
 
-## 실행 방법
+## How to Run
 
-`bio_knowledge_miner`의 각 기능은 독립적으로 실행될 수 있습니다. 예를 들어, 특정 주제에 대한 논문을 수집하고 지식 그래프를 구축하려면 다음 단계를 따를 수 있습니다.
+Each function of `bio_knowledge_miner` can be run independently. For example, to collect papers on a specific topic and build a knowledge graph, you can follow these steps:
 
 ```bash
-# (Bio-Info 프로젝트 루트에서 실행)
+# (Run from the Bio-Info project root)
 
-# 1. PubMed에서 'KRAS G12C' 관련 논문 초록 수집
+# 1. Collect abstracts of papers related to 'KRAS G12C' from PubMed
 python -m bio_knowledge_miner.data_collection.collect_pubmed_data --query "KRAS G12C" --max_papers 100
 
-# 2. 수집된 텍스트에서 엔티티 추출 및 지식 그래프에 노드로 추가
+# 2. Extract entities from the collected text and add them as nodes to the knowledge graph
 python -m bio_knowledge_miner.llm_services.entity_extractor
 
-# 3. 지식 그래프의 노드 간 관계 추론 및 엣지 추가
+# 3. Infer relationships between nodes in the knowledge graph and add edges
 python -m bio_knowledge_miner.knowledge_graph.kg_builder
 ```
 
@@ -60,32 +60,32 @@ End-to-end **Literature ➜ Knowledge-Graph** pipeline powered by AI.
 ---
 ## Project Layout
 ```
-/bio-knowledge-miner/
-├── main.py                 # 파이프라인을 실행하는 메인 스크립트
-├── config.py               # API 키, DB 접속 정보, 파일 경로 등 설정 관리
-├── requirements.txt        # 프로젝트에 필요한 모든 파이썬 라이브러리 목록
-├── .env                    # (Git 무시) 실제 API 키와 비밀번호 저장
+/bio_knowledge_miner/
+├── main.py                 # Main script to run the pipeline
+├── config.py               # Manages settings like API keys, DB connection info, file paths
+├── requirements.txt        # List of all Python libraries required for the project
+├── .env                    # (Git ignored) Stores actual API keys and passwords
 |
-├── data_collection/        # 1. 데이터 수집 모듈
+├── data_collection/        # 1. Data Collection Module
 │   ├── __init__.py
-│   ├── api_clients.py      # PubMed, Semantic Scholar 등 외부 API 연동 로직
-│   └── crawler.py          # 수집 실행 및 데이터 저장 로직
+│   ├── api_clients.py      # Logic for interfacing with external APIs like PubMed, Semantic Scholar
+│   └── crawler.py          # Logic for executing collection and saving data
 |
-├── text_processing/        # 2. 문서 처리 모듈
+├── text_processing/        # 2. Document Processing Module
 │   ├── __init__.py
-│   ├── pdf_parser.py       # PDF 파일 파싱 (텍스트, 이미지 추출)
-│   └── ocr_handler.py      # 이미지에서 OCR 수행
+│   ├── pdf_parser.py       # Parsing PDF files (extracting text, images)
+│   └── ocr_handler.py      # Performing OCR on images
 |
-├── llm_services/           # 3. LLM 연동 모듈
+├── llm_services/           # 3. LLM Integration Module
 │   ├── __init__.py
-│   ├── summarizer.py       # 문서 요약 및 키워드 태깅
-│   └── entity_extractor.py # 텍스트에서 지식(Node, Relationship) 추출
+│   ├── summarizer.py       # Document summarization and keyword tagging
+│   └── entity_extractor.py # Extracting knowledge (Nodes, Relationships) from text
 |
-└── knowledge_graph/        # 4. 지식 그래프 모듈
+└── knowledge_graph/        # 4. Knowledge Graph Module
     ├── __init__.py
-    ├── neo4j_connector.py  # Neo4j 데이터베이스 연결 및 쿼리 실행
-    ├── kg_builder.py       # 추출된 지식을 DB에 저장(구축)
-    └── graph_rag_query.py  # 자연어 질의를 Cypher 쿼리로 변환 및 응답 생성
+    ├── neo4j_connector.py  # Connecting to and querying the Neo4j database
+    ├── kg_builder.py       # Saving (building) extracted knowledge into the DB
+    └── graph_rag_query.py  # Converting natural language queries to Cypher and generating responses
 ```
 
 ---
@@ -112,7 +112,7 @@ services:
       - "7474:7474"   # Browser
       - "7687:7687"   # Bolt
     volumes:
-      - ./neo4j_data:/data   # 로컬 퍼시스턴스
+      - ./neo4j_data:/data   # Local persistence
 EOF
 
 docker compose up -d
@@ -145,15 +145,17 @@ Execution flow:
 MATCH (c:Compound)-[:TARGETS]->(g:Gene)-[:ASSOCIATED_WITH]->(d:Disease)
 RETURN c,g,d
 
-MATCH (c:Compound)-[:TARGETS]->(g:Gene {name:"KRAS"})
-RETURN c.name, c.pubchem_cid, c.smiles, c.inchi_key
+// KRAS-related diseases
+MATCH (g:Gene {name:'KRAS'})-[:ASSOCIATED_WITH]->(d:Disease)
+RETURN d;
 ```
 
+Python helper:
+```python
+from bio_knowledge_miner_pkg.knowledge_graph.graph_rag_query import search_by_keyword
+print(search_by_keyword("KRAS"))
+```
 
-<img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-01.png"> 
-
-
-<img src="https://github.com/surplus96/BioInfo-SynapseRX/blob/main/data/results/Neo4j-DataResult-KRAS-Example-02.png"> 
-
+---
 ## License
 MIT 
