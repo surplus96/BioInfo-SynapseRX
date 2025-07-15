@@ -159,9 +159,10 @@ python -m bio_knowledge_miner.maintenance.annotate_variants
 
 ## Example Result Explanation
 
-```
-1. Final Report Explanation (report_5V90_2025-07-15.md)
 
+1. Final Report Explanation [RESULT](https://github.com/surplus96/BioInfo-SynapseRX/blob/main/outputs/reports/report_5V90_2025-07-15.md)
+
+```
 - run_compound_id: A temporary ID used only for this run.
 - docking_score: Binding energy. The more negative the value, the stronger the binding to the target protein. (The most important efficacy indicator)
 - complex_file: Path to the 3D binding structure file.
@@ -170,9 +171,11 @@ python -m bio_knowledge_miner.maintenance.annotate_variants
 - smiles: The 2D structural formula of the compound.
 - herg_ic50, cyp_inhibition, logS, sa_score: Safety/drug-likeness/developability indicators, same as before.
 - composite: Composite score.
+```
 
 2. Results Analysis: In-depth exploration of the Top 5 candidates
 
+```
 - 1st Place: Irinotecan (docking_score: -11.03)
     - Identity: Irinotecan is an anticancer drug used in actual clinical practice (mainly for colorectal cancer).
     - Interpretation:
