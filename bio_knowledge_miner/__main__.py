@@ -6,21 +6,17 @@ from .llm_services.entity_extractor import llm_extract_entities
 from .knowledge_graph.kg_builder import ingest_document_entities
 import json, os
 from datetime import datetime
+import argparse
+
 # global variable to share between steps
 extracted_pdf_data_cache = []
 current_time = datetime.now().strftime("%Y%m%d")
 OUTPUT_JSON = os.path.join(config.EXTRACTION_PATH, f"pdf_entities_summary_{current_time}.json")
 
-def step_1_collect_data():
+def step_1_collect_data(search_queries):
     """논문 및 특허 데이터 수집"""
     print("--- Step 1: Collecting data from PubMed ---")
     
-    # 크롤링할 검색어와 개수 설정
-    search_queries = [
-        "KRAS G12C inhibitors[Title/Abstract]",
-        "Sotorasib mechanism of action[Title/Abstract]",
-        "KRAS mutations in pancreatic cancer[Title/Abstract]"
-    ]
     max_results = 20 # 각 쿼리당 20개
     
     run_pubmed_crawler(search_queries, max_results)
@@ -90,16 +86,38 @@ def step_4_build_knowledge_graph():
     print("Knowledge Graph build complete.")
     print("-" * 30)
 
+# 새로운 함수: 파이프라인을 외부에서 직접 호출할 수 있게 함
+def run_pipeline(search_queries):
+    """검색 쿼리 리스트를 받아 전체 파이프라인을 실행합니다."""
+    print("🚀 Starting Bio-Knowledge Miner Pipeline...")
+
+    # 1단계: 데이터 수집
+    step_1_collect_data(search_queries)
+
+    # 2단계: 텍스트 처리
+    step_2_process_text()
+
+    # 3단계: 엔티티 추출
+    step_3_extract_entities()
+
+    # 4단계: 지식 그래프 구축
+    step_4_build_knowledge_graph()
+
+    print("✅ Pipeline finished successfully!")
+
 def main():
     """전체 파이프라인 실행"""
-    print("🚀 Starting Bio-Knowledge Miner Pipeline...")
-    
-    step_1_collect_data()
-    step_2_process_text()
-    step_3_extract_entities()
-    step_4_build_knowledge_graph()
-    
-    print("✅ Pipeline finished successfully!")
+    parser = argparse.ArgumentParser(description="Bio-Knowledge Miner Pipeline. Collects data from PubMed, processes it, and builds a knowledge graph.")
+    parser.add_argument(
+        '--queries', 
+        nargs='+', 
+        required=True, 
+        help='List of search queries for PubMed, enclosed in quotes. For example: "KRAS G12C inhibitors[Title/Abstract]" "Sotorasib mechanism of action[Title/Abstract]"'
+    )
+    args = parser.parse_args()
+
+    # 인자 파싱 후 run_pipeline으로 위임
+    run_pipeline(args.queries)
 
 if __name__ == "__main__":
     main() 
